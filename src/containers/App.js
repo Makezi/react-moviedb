@@ -1,8 +1,10 @@
 import React from 'react';
+import MovieDetailContainer from "./MovieDetailContainer";
 
 const App = () => (
   <div>
-    Hello World
+    <h1>Movie DB</h1>
+    <MovieDetailContainer />
   </div>
 );
 
