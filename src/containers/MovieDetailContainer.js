@@ -5,16 +5,17 @@ import MovieDetail from '../components/MovieDetail';
 
 class MovieDetailContainer extends Component {
   componentDidMount() {
-    this.props.fetchMovie(374132);
+    this.props.fetchMovie(this.props.id);
   }
 
   render() {
     return (
-      <MovieDetail
-        hasErrored={this.props.hasErrored}
-        isLoading={this.props.isLoading}
-        movie={this.props.movies.byId[374132]}
-      />
+      <div>Hello</div>
+      // <MovieDetail
+      //   hasErrored={this.props.hasErrored}
+      //   isLoading={this.props.isLoading}
+      //   movie={this.props.movies.byId[374132]}
+      // />
     );
   }
 }

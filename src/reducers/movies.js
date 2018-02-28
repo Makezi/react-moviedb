@@ -4,30 +4,33 @@ import {
   FETCH_MOVIE
 } from '../actions/movies';
 
-const initialState = {
-  byId: {},
-  allIds: [],
-  isLoading: false,
-  hasErrored: false
-};
+import _ from 'lodash';
 
-function moviesIsLoading(state, action) {
-  return { ...state, isLoading: action.isLoading };
+function moviesIsLoading(state = null, action) {
+  return _.merge({}, state, {
+    ...state,
+    entities: {
+      ...state.entities,
+      movies: { ...state.movies, isLoading: action.isLoading }
+    }
+  });
 }
 
-function moviesHasErrored(state, action) {
-  return { ...state, hasErrored: action.hasErrored };
+function moviesHasErrored(state = null, action) {
+  return _.merge({}, state, {
+    ...state,
+    entities: {
+      ...state.entities,
+      movies: { ...state.movies, hasErrored: action.hasErrored }
+    }
+  });
 }
 
 function fetchMovies(state, action) {
-  return {
-    ...state,
-    byId: { ...state.byId, [action.movie.id]: action.movie },
-    allIds: [...state.allIds, action.movie.id]
-  };
+  return _.merge({}, state, action.entities);
 }
 
-export function movies(state = initialState, action) {
+function movies(state = {}, action) {
   switch (action.type) {
     case MOVIES_IS_LOADING:
       return moviesIsLoading(state, action);
@@ -39,3 +42,5 @@ export function movies(state = initialState, action) {
       return state;
   }
 }
+
+export default movies;

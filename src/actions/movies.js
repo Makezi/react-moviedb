@@ -1,4 +1,5 @@
 import axios from 'axios';
+import normalizedData from "./schema";
 
 export const MOVIES_HAS_ERRORED = 'MOVIES_HAS_ERRORED';
 export const MOVIES_IS_LOADING = 'MOVIES_IS_LOADING';
@@ -33,12 +34,12 @@ export function fetchMovie(id) {
         dispatch(moviesIsLoading(false));
         return response;
       })
-      .then(response =>
+      .then(response => {
         dispatch({
           type: FETCH_MOVIE,
-          movie: response.data
+          entities: normalizedData(response.data)
         })
-      )
+      })
       .catch(() => dispatch(moviesHasErrored(true)));
   };
 }
