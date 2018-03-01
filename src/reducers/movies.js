@@ -3,7 +3,7 @@ import {
   HAS_ERRORED,
   FETCH_MOVIE
 } from '../constants/action_types';
-import { isLoading, hasErrored, createReducer } from './helpers';
+import { isLoading, hasErrored } from './reducer_helpers';
 import _ from 'lodash';
 
 const initialState = {
@@ -17,12 +17,12 @@ function fetchMovie(state = initialState, action) {
   return {
     ...state,
     byId: _.merge({}, state.byId, {
-      [action.movie.id]: {
-        ...action.movie,
-        genres: _.mapKeys(action.movie.genres, 'id')
+      [action.payload.id]: {
+        ...action.payload,
+        genres: _.mapKeys(action.payload.genres, 'id')
       }
     }),
-    allIds: Array.from(new Set([...state.allIds, action.movie.id]))
+    allIds: Array.from(new Set([...state.allIds, action.payload.id]))
   };
 }
 

@@ -4,7 +4,7 @@ import {
   FETCH_MOVIE_GENRES,
   FETCH_SHOW_GENRES
 } from '../constants/action_types';
-import { isLoading, hasErrored } from './helpers';
+import { isLoading, hasErrored } from './reducer_helpers';
 import _ from 'lodash';
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
 };
 
 function fetchGenres(state = initialState, action) {
-  const mapped = _.mapKeys(action.genres, 'id');
+  const mapped = _.mapKeys(action.payload.genres, 'id');
   return {
     ...state,
     byId: _.merge({}, state.byId, mapped),
