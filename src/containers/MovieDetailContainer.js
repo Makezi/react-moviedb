@@ -5,7 +5,7 @@ import MovieDetail from '../components/MovieDetail';
 
 class MovieDetailContainer extends Component {
   componentDidMount() {
-    this.props.fetchMovie(374132);
+    this.props.fetchMovie(this.props.id);
   }
 
   render() {
@@ -13,7 +13,7 @@ class MovieDetailContainer extends Component {
       <MovieDetail
         hasErrored={this.props.hasErrored}
         isLoading={this.props.isLoading}
-        movie={this.props.movies.byId[374132]}
+        movie={this.props.movies.byId[this.props.id]}
       />
     );
   }

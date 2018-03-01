@@ -22,7 +22,13 @@ function moviesHasErrored(state, action) {
 function fetchMovies(state, action) {
   return {
     ...state,
-    byId: { ...state.byId, [action.movie.id]: action.movie },
+    byId: {
+      ...state.byId,
+      [action.movie.id]: {
+        ...action.movie,
+        genres: action.movie.genres.map(genre => genre.id)
+      }
+    },
     allIds: [...state.allIds, action.movie.id]
   };
 }
