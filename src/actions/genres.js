@@ -3,10 +3,8 @@ import {
   FETCH_MOVIE_GENRES,
   FETCH_SHOW_GENRES
 } from '../constants/action_types';
+import { BASE_URL, API_KEY } from '../constants/api';
 import { fetchData } from './action_helpers';
-
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = `?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 
 export function fetchMovieGenres() {
   const url = `${BASE_URL}genre/movie/list${API_KEY}`;
