@@ -1,9 +1,10 @@
-import _ from 'lodash';
 import {
-  MOVIES_HAS_ERRORED,
-  MOVIES_IS_LOADING,
+  IS_LOADING,
+  HAS_ERRORED,
   FETCH_MOVIE
-} from '../actions/movies';
+} from '../constants/action_types';
+import { isLoading, hasErrored, createReducer } from './helpers';
+import _ from 'lodash';
 
 const initialState = {
   byId: {},
@@ -12,15 +13,7 @@ const initialState = {
   hasErrored: false
 };
 
-function moviesIsLoading(state, action) {
-  return { ...state, isLoading: action.isLoading };
-}
-
-function moviesHasErrored(state, action) {
-  return { ...state, hasErrored: action.hasErrored };
-}
-
-function fetchMovie(state, action) {
+function fetchMovie(state = initialState, action) {
   return {
     ...state,
     byId: _.merge({}, state.byId, {
@@ -35,10 +28,10 @@ function fetchMovie(state, action) {
 
 export function movies(state = initialState, action) {
   switch (action.type) {
-    case MOVIES_IS_LOADING:
-      return moviesIsLoading(state, action);
-    case MOVIES_HAS_ERRORED:
-      return moviesHasErrored(state, action);
+    case IS_LOADING:
+      return isLoading(state, action);
+    case HAS_ERRORED:
+      return hasErrored(state, action);
     case FETCH_MOVIE:
       return fetchMovie(state, action);
     default:

@@ -1,9 +1,10 @@
 import {
-  GENRES_HAS_ERRORED,
-  GENRES_IS_LOADING,
+  IS_LOADING,
+  HAS_ERRORED,
   FETCH_MOVIE_GENRES,
   FETCH_SHOW_GENRES
-} from '../actions/genres';
+} from '../constants/action_types';
+import { isLoading, hasErrored } from './helpers';
 import _ from 'lodash';
 
 const initialState = {
@@ -13,15 +14,7 @@ const initialState = {
   hasErrored: false
 };
 
-function genresIsLoading(state, action) {
-  return { ...state, isLoading: action.isLoading };
-}
-
-function genresHasErrored(state, action) {
-  return { ...state, hasErrored: action.hasErrored };
-}
-
-function fetchGenres(state, action) {
+function fetchGenres(state = initialState, action) {
   const mapped = _.mapKeys(action.genres, 'id');
   return {
     ...state,
@@ -32,10 +25,10 @@ function fetchGenres(state, action) {
 
 export function genres(state = initialState, action) {
   switch (action.type) {
-    case GENRES_IS_LOADING:
-      return genresIsLoading(state, action);
-    case GENRES_HAS_ERRORED:
-      return genresHasErrored(state, action);
+    case IS_LOADING:
+      return isLoading(state, action);
+    case HAS_ERRORED:
+      return hasErrored(state, action);
     case FETCH_MOVIE_GENRES:
     case FETCH_SHOW_GENRES:
       return fetchGenres(state, action);

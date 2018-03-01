@@ -1,22 +1,19 @@
 import axios from 'axios';
-
-export const MOVIES_HAS_ERRORED = 'MOVIES_HAS_ERRORED';
-export const MOVIES_IS_LOADING = 'MOVIES_IS_LOADING';
-export const FETCH_MOVIE = 'FETCH_MOVIE';
+import { IS_LOADING, HAS_ERRORED, FETCH_MOVIE } from "../constants/action_types";
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = `?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 
 export function moviesHasErrored(bool) {
   return {
-    type: MOVIES_HAS_ERRORED,
+    type: HAS_ERRORED,
     hasErrored: bool
   };
 }
 
 export function moviesIsLoading(bool) {
   return {
-    type: MOVIES_IS_LOADING,
+    type: IS_LOADING,
     isLoading: bool
   };
 }

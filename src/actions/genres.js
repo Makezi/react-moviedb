@@ -1,23 +1,24 @@
 import axios from 'axios';
-
-export const GENRES_HAS_ERRORED = 'GENRES_HAS_ERRORED';
-export const GENRES_IS_LOADING = 'GENRES_IS_LOADING';
-export const FETCH_MOVIE_GENRES = 'FETCH_MOVIE_GENRES';
-export const FETCH_SHOW_GENRES = "FETCH_SHOW_GENRES";
+import {
+  IS_LOADING,
+  HAS_ERRORED,
+  FETCH_MOVIE_GENRES,
+  FETCH_SHOW_GENRES
+} from '../constants/action_types';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = `?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
 
 export function genresHasErrored(bool) {
   return {
-    type: GENRES_HAS_ERRORED,
+    type: HAS_ERRORED,
     hasErrored: bool
   };
 }
 
 export function genresIsLoading(bool) {
   return {
-    type: GENRES_IS_LOADING,
+    type: IS_LOADING,
     isLoading: bool
   };
 }
