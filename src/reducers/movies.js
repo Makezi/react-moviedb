@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   MOVIES_HAS_ERRORED,
   MOVIES_IS_LOADING,
@@ -19,17 +20,16 @@ function moviesHasErrored(state, action) {
   return { ...state, hasErrored: action.hasErrored };
 }
 
-function fetchMovies(state, action) {
+function fetchMovie(state, action) {
   return {
     ...state,
-    byId: {
-      ...state.byId,
+    byId: _.merge({}, state.byId, {
       [action.movie.id]: {
         ...action.movie,
-        genres: action.movie.genres.map(genre => genre.id)
+        genres: _.mapKeys(action.movie.genres, 'id')
       }
-    },
-    allIds: [...state.allIds, action.movie.id]
+    }),
+    allIds: Array.from(new Set([...state.allIds, action.movie.id]))
   };
 }
 
@@ -40,7 +40,7 @@ export function movies(state = initialState, action) {
     case MOVIES_HAS_ERRORED:
       return moviesHasErrored(state, action);
     case FETCH_MOVIE:
-      return fetchMovies(state, action);
+      return fetchMovie(state, action);
     default:
       return state;
   }

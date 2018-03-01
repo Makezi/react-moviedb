@@ -5,7 +5,8 @@ const App = () => (
   <div>
     <h1>Movie DB</h1>
     <MovieDetailContainer id={374132} />
-    <MovieDetailContainer id={297761} />
+    {/* <MovieDetailContainer id={297761} />
+    <MovieDetailContainer id={297761} /> */}
   </div>
 );
 
