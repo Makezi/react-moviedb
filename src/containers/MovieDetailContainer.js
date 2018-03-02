@@ -9,11 +9,11 @@ class MovieDetailContainer extends Component {
   componentDidMount() {
     this.props.fetchMovie(this.props.id);
     this.props.fetchMovieGenres();
-    setTimeout(() => console.log("hello"), 1000);
     this.props.fetchShowGenres();
     this.props.fetchNowPlayingMovies();
     this.props.fetchNowPlayingMovies(2);
     this.props.fetchNowPlayingMovies(99);
+    this.props.fetchMovie(378111);
   }
 
   render() {

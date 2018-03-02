@@ -34,6 +34,7 @@ function fetchNowPlayingMovies(state = initialState, action) {
     byId: _.merge({}, state.byId, newPage),
     allIds: Array.from(new Set([...state.allIds, 'now_playing']))
   };
+  // return state;
 }
 
 export function categories(state = initialState, action) {

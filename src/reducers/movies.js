@@ -14,13 +14,15 @@ const initialState = {
 };
 
 function fetchMovie(state = initialState, action) {
+  let genres = action.payload.genres
+    ? action.payload.genres.map(genre => genre.id)
+    : action.payload_genre_ids;
+  let movie = action.payload;
+  delete movie['genre_ids'];
   return {
     ...state,
     byId: _.merge({}, state.byId, {
-      [action.payload.id]: {
-        ...action.payload,
-        genres: action.payload.genres.map(genre => genre.id)
-      }
+      [action.payload.id]: { ...movie, genres }
     }),
     allIds: Array.from(new Set([...state.allIds, action.payload.id]))
   };
