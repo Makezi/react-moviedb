@@ -1,2 +1,73 @@
-# Should we check if id exists before fetching data? If so, perhaps we can
-# have a "time fetched" and then compare it, i.e. only fetch after 5 minutes?
+2 March
+
+Look into how to do pagination in the state
+I want to have a categories state where that looks something like this:
+
+categories: {
+  popular: {
+    movies: {
+      page: {
+        1: {
+          page: 1,
+          movie_ids: [26, 4745, 2349, 1231]
+        },
+        2: {
+          page: 2,
+          movie_ids: [261, 745, 239, 121]
+        }
+      }
+      total_pages: 230,
+      total_results: 30535,
+    },
+    shows: {
+      page: {
+        1: {
+          page: 1,
+          show_ids: [26, 4745, 2349, 1231]
+        },
+        2: {
+          page: 2,
+          show_ids: [261, 745, 239, 121]
+        }
+      }
+      total_pages: 230,
+      total_results: 30535,
+    },
+  },
+  top_rated: {
+    movies: {
+      page: {
+        1: {
+          page: 1,
+          movie_ids: [26, 4745, 2349, 1231]
+        },
+        2: {
+          page: 2,
+          movie_ids: [261, 745, 239, 121]
+        }
+      }
+      total_pages: 230,
+      total_results: 30535,
+    },
+    shows: {
+      page: {
+        1: {
+          page: 1,
+          show_ids: [26, 4745, 2349, 1231]
+        },
+        2: {
+          page: 2,
+          show_ids: [261, 745, 239, 121]
+        }
+      }
+      total_pages: 230,
+      total_results: 30535,
+    },
+  }
+}
+
+Basically when we fetch a popular movies list for example, we would get 
+the movie data. What I want is to refactor that data to the above state and
+push the movie data to the movie state reducer.
+
+See how to interact from one reducer to another?

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchMovie } from '../actions/movies';
 import { fetchMovieGenres, fetchShowGenres } from '../actions/genres';
+import { fetchNowPlayingMovies } from "../actions/categories";
 import MovieDetail from '../components/MovieDetail';
 
 class MovieDetailContainer extends Component {
@@ -10,6 +11,9 @@ class MovieDetailContainer extends Component {
     this.props.fetchMovieGenres();
     setTimeout(() => console.log("hello"), 1000);
     this.props.fetchShowGenres();
+    this.props.fetchNowPlayingMovies();
+    this.props.fetchNowPlayingMovies(2);
+    this.props.fetchNowPlayingMovies(99);
   }
 
   render() {
@@ -33,5 +37,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   fetchMovie,
   fetchMovieGenres,
-  fetchShowGenres
+  fetchShowGenres,
+  fetchNowPlayingMovies
 })(MovieDetailContainer);

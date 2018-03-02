@@ -19,7 +19,7 @@ function fetchMovie(state = initialState, action) {
     byId: _.merge({}, state.byId, {
       [action.payload.id]: {
         ...action.payload,
-        genres: _.mapKeys(action.payload.genres, 'id')
+        genres: action.payload.genres.map(genre => genre.id)
       }
     }),
     allIds: Array.from(new Set([...state.allIds, action.payload.id]))
