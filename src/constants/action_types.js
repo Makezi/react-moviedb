@@ -5,6 +5,7 @@ export const GENRE_IS_LOADING = 'GENRE_IS_LOADING';
 
 // Movie actions
 export const FETCH_MOVIE = 'FETCH_MOVIE';
+export const STORE_MOVIE = "STORE_MOVIE";
 export const MOVIE_IS_LOADING = 'MOVIE_IS_LOADING';
 
 // Category action

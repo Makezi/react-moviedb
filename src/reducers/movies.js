@@ -1,4 +1,4 @@
-import { MOVIE_IS_LOADING, FETCH_MOVIE } from '../constants/action_types';
+import { MOVIE_IS_LOADING, FETCH_MOVIE, STORE_MOVIE } from '../constants/action_types';
 import { isLoading } from './reducer_helpers';
 import _ from 'lodash';
 
@@ -28,6 +28,7 @@ export function movies(state = initialState, action) {
     case MOVIE_IS_LOADING:
       return isLoading(state, action);
     case FETCH_MOVIE:
+    case STORE_MOVIE:
       return fetchMovie(state, action);
     default:
       return state;
