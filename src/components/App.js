@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieDetailContainer from './MovieDetailContainer';
+import MovieDetailContainer from '../containers/MovieDetailContainer';
 
 const App = () => (
   <div>
