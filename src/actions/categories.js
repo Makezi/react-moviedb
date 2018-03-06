@@ -30,6 +30,7 @@ function fetchData(url, mainAction, slicedAction) {
           dispatch({ type: slicedAction, payload: result })
         );
       })
+      // .then(() => dispatch(isLoading(CATEGORY_IS_LOADING, false)))
       .catch(error => console.error(error));
   };
 }

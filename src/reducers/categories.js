@@ -14,7 +14,7 @@ const initialState = {
 function fetchNowPlayingMovies(state = initialState, action) {
   if (action.payload.results.length === 0) return state;
   const newPage = {
-    now_playing: {
+    nowPlaying: {
       movies: {
         pages: {
           [action.payload.page]: {
@@ -22,8 +22,8 @@ function fetchNowPlayingMovies(state = initialState, action) {
             ids: action.payload.results.map(movie => movie.id)
           }
         },
-        total_pages: action.payload.total_pages,
-        total_results: action.payload.total_results
+        totalPages: action.payload.total_pages,
+        totalResults: action.payload.total_results
       }
     }
   };
