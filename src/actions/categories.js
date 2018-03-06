@@ -5,10 +5,10 @@ import {
   STORE_MOVIE
 } from '../constants/action_types';
 import { isLoading } from './action_helpers';
-import { BASE_URL, API_KEY } from '../constants/api';
+import { BASE_API_URL, API_KEY } from '../constants/api';
 
 export function fetchNowPlayingMovies(page = 1) {
-  const url = `${BASE_URL}movie/now_playing${API_KEY}&page=${page}`;
+  const url = `${BASE_API_URL}movie/now_playing${API_KEY}&page=${page}`;
   return fetchData(url, FETCH_NOW_PLAYING_MOVIES, STORE_MOVIE);
 }
 
@@ -21,7 +21,7 @@ function fetchData(url, mainAction, slicedAction) {
         if (response.status !== 200) {
           throw Error(response.statusText);
         }
-        dispatch(isLoading(CATEGORY_IS_LOADING, false));
+        // dispatch(isLoading(CATEGORY_IS_LOADING, false));
         return response;
       })
       .then(response => {
@@ -30,7 +30,7 @@ function fetchData(url, mainAction, slicedAction) {
           dispatch({ type: slicedAction, payload: result })
         );
       })
-      // .then(() => dispatch(isLoading(CATEGORY_IS_LOADING, false)))
+      .then(() => dispatch(isLoading(CATEGORY_IS_LOADING, false)))
       .catch(error => console.error(error));
   };
 }

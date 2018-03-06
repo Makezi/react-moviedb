@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { MOVIE_IS_LOADING, FETCH_MOVIE } from '../constants/action_types';
-import { BASE_URL, API_KEY } from '../constants/api';
+import { BASE_API_URL, API_KEY } from '../constants/api';
 import { isLoading } from './action_helpers';
 
 export function fetchMovie(id) {
-  const url = `${BASE_URL}movie/${id}${API_KEY}`;
+  const url = `${BASE_API_URL}movie/${id}${API_KEY}`;
   return fetchData(url, FETCH_MOVIE);
 }
 

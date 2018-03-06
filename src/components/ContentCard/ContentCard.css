@@ -1,0 +1,24 @@
+.card {
+  height: 100%;
+  width: 100%;
+}
+
+.card:hover .container {
+  display: flex;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.container {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  height: 100%;
+  color: white;
+}
