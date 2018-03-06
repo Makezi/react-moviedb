@@ -11,9 +11,9 @@ class MovieDetailContainer extends Component {
     this.props.fetchMovieGenres();
     this.props.fetchShowGenres();
     this.props.fetchNowPlayingMovies();
-    this.props.fetchNowPlayingMovies(2);
-    this.props.fetchNowPlayingMovies(99);
-    this.props.fetchMovie(378111);
+    // this.props.fetchNowPlayingMovies(2);
+    // this.props.fetchNowPlayingMovies(99);
+    // this.props.fetchMovie(378111);
   }
 
   render() {

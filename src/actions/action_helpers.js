@@ -1,38 +1,30 @@
-import axios from 'axios';
-import { IS_LOADING, HAS_ERRORED } from '../constants/action_types';
+// import axios from 'axios';
 
-export function isLoading(bool) {
+export function isLoading(type, bool) {
   return {
-    type: IS_LOADING,
+    type: type,
     isLoading: bool
   };
 }
 
-export function hasErrored(bool) {
-  return {
-    type: HAS_ERRORED,
-    hasErrored: bool
-  };
-}
-
-export function fetchData(url, action) {
-  return dispatch => {
-    dispatch(isLoading(true));
-    axios
-      .get(url)
-      .then(response => {
-        if (response.status !== 200) {
-          throw Error(response.statusText);
-        }
-        dispatch(isLoading(false));
-        return response;
-      })
-      .then(response =>
-        dispatch({
-          type: action,
-          payload: response.data
-        })
-      )
-      .catch(() => dispatch(hasErrored(true)));
-  };
-}
+// export function fetchData(url, action) {
+//   return dispatch => {
+//     dispatch(isLoading(true));
+//     axios
+//       .get(url)
+//       .then(response => {
+//         if (response.status !== 200) {
+//           throw Error(response.statusText);
+//         }
+//         dispatch(isLoading(false));
+//         return response;
+//       })
+//       .then(response =>
+//         dispatch({
+//           type: action,
+//           payload: response.data
+//         })
+//       )
+//       .catch(error => console.error(error));
+//   };
+// }
