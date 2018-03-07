@@ -9,13 +9,13 @@ class PopularMoviesCarouselContainer extends Component {
   }
 
   render() {
-    const { moviesInfo } = this.props;
-    const { popularList } = this.props;
+    const { moviesList } = this.props;
+    const { categoryList } = this.props;
 
     return (
       <PopularMoviesCarousel
-        categoryList={popularList}
-        moviesInfo={moviesInfo}
+        categoryList={categoryList}
+        moviesList={moviesList}
       />
     );
   }
@@ -23,8 +23,8 @@ class PopularMoviesCarouselContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    moviesInfo: state.movies,
-    popularList: state.categories.popular.movies
+    moviesList: state.movies,
+    categoryList: state.categories.movies["popular"]
   };
 };
 

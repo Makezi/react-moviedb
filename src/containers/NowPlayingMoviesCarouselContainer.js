@@ -7,15 +7,15 @@ class NowPlayingMoviesCarouselContainer extends Component {
   componentDidMount() {
     this.props.fetchNowPlayingMovies();
   }
-  
+
   render() {
-    const { moviesInfo } = this.props;
-    const { nowPlayingList } = this.props;
+    const { moviesList } = this.props;
+    const { categoryList } = this.props;
 
     return (
       <NowPlayingMoviesCarousel
-        categoryList={nowPlayingList}
-        moviesInfo={moviesInfo}
+        categoryList={categoryList}
+        moviesList={moviesList}
       />
     );
   }
@@ -23,8 +23,8 @@ class NowPlayingMoviesCarouselContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    moviesInfo: state.movies,
-    nowPlayingList: state.categories.nowPlaying.movies
+    moviesList: state.movies,
+    categoryList: state.categories.movies['nowPlaying']
   };
 };
 
