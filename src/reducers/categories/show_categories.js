@@ -9,7 +9,8 @@ const initialState = {
     pages: {},
     totalPages: 0,
     totalResults: 0,
-    isLoading: false
+    isLoading: false,
+    lastFetched: 0
   },
 };
 
@@ -32,7 +33,8 @@ function fetchCategory(state = initialState, action, category) {
       },
       totalPages: action.payload.total_pages,
       totalResults: action.payload.total_results,
-      isLoading: state[category].isLoading
+      isLoading: state[category].isLoading,
+      lastFetched: Date.now()
     })
   };
 }

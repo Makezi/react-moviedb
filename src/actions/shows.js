@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { SHOW_IS_LOADING, FETCH_SHOW } from '../constants/action_types';
-import { BASE_API_URL, API_KEY } from '../constants/api';
+import { BASE_API_URL, API_KEY, API_CACHE_TIME } from '../constants/api';
 import { isLoading } from './action_helpers';
 
 export function fetchShow(id) {
@@ -9,7 +9,10 @@ export function fetchShow(id) {
 }
 
 export function fetchData(url, action) {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const lastFetched = getState().shows.lastFetched;
+    const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
+    if (!isDataStale) return;
     dispatch(isLoading(SHOW_IS_LOADING, true));
     axios
       .get(url)

@@ -10,6 +10,7 @@ const initialState = {
   byId: {},
   allIds: [],
   isLoading: false,
+  lastFetched: 0
 };
 
 function fetchGenres(state = initialState, action) {
@@ -17,7 +18,8 @@ function fetchGenres(state = initialState, action) {
   return {
     ...state,
     byId: _.merge({}, state.byId, mapped),
-    allIds: Array.from(new Set([...state.allIds, ...Object.keys(mapped)]))
+    allIds: Array.from(new Set([...state.allIds, ...Object.keys(mapped)])),
+    lastFetched: Date.now()
   };
 }
 

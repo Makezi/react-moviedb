@@ -10,11 +10,14 @@ import {
   STORE_SHOW
 } from '../constants/action_types';
 import { isLoading } from './action_helpers';
-import { BASE_API_URL, API_KEY } from '../constants/api';
+import { BASE_API_URL, API_KEY, API_CACHE_TIME } from '../constants/api';
 
 export function fetchNowPlayingMovies(page = 1) {
   const url = `${BASE_API_URL}movie/now_playing${API_KEY}&page=${page}`;
-  return dispatch => {
+  return (dispatch, getState) => {
+    const lastFetched = getState().categories.movies.nowPlaying.lastFetched;
+    const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
+    if (!isDataStale) return;
     dispatch(isLoading(NOW_PLAYING_MOVIES_IS_LOADING, true));
     axios
       .get(url)
@@ -32,12 +35,15 @@ export function fetchNowPlayingMovies(page = 1) {
       })
       .then(() => dispatch(isLoading(NOW_PLAYING_MOVIES_IS_LOADING, false)))
       .catch(error => console.error(error));
-    }
+  };
 }
 
 export function fetchPopularMovies(page = 1) {
   const url = `${BASE_API_URL}movie/popular${API_KEY}&page=${page}`;
-  return dispatch => {
+  return (dispatch, getState) => {
+    const lastFetched = getState().categories.movies.popular.lastFetched;
+    const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
+    if (!isDataStale) return;
     dispatch(isLoading(POPULAR_MOVIES_IS_LOADING, true));
     axios
       .get(url)
@@ -60,7 +66,10 @@ export function fetchPopularMovies(page = 1) {
 
 export function fetchOnTheAirShows(page = 1) {
   const url = `${BASE_API_URL}tv/on_the_air${API_KEY}&page=${page}`;
-  return dispatch => {
+  return (dispatch, getState) => {
+    const lastFetched = getState().categories.shows.onTheAir.lastFetched;
+    const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
+    if (!isDataStale) return;
     dispatch(isLoading(ON_THE_AIR_SHOWS_IS_LOADING, true));
     axios
       .get(url)

@@ -5,7 +5,8 @@ import _ from 'lodash';
 const initialState = {
   byId: {},
   allIds: [],
-  isLoading: false
+  isLoading: false,
+  lastFetched: 0
 };
 
 function fetchShow(state = initialState, action) {
@@ -19,7 +20,8 @@ function fetchShow(state = initialState, action) {
     byId: _.merge({}, state.byId, {
       [action.payload.id]: { ...show, genres }
     }),
-    allIds: Array.from(new Set([...state.allIds, action.payload.id]))
+    allIds: Array.from(new Set([...state.allIds, action.payload.id])),
+    lastFetched: Date.now()
   };
 }
 

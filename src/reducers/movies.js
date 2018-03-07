@@ -1,11 +1,12 @@
 import { MOVIE_IS_LOADING, FETCH_MOVIE, STORE_MOVIE } from '../constants/action_types';
-import { isLoading } from './reducer_helpers';
+import { isLoading, isDataStale } from './reducer_helpers';
 import _ from 'lodash';
 
 const initialState = {
   byId: {},
   allIds: [],
-  isLoading: false
+  isLoading: false,
+  lastFetched: 0
 };
 
 function fetchMovie(state = initialState, action) {
@@ -19,7 +20,8 @@ function fetchMovie(state = initialState, action) {
     byId: _.merge({}, state.byId, {
       [action.payload.id]: { ...movie, genres }
     }),
-    allIds: Array.from(new Set([...state.allIds, action.payload.id]))
+    allIds: Array.from(new Set([...state.allIds, action.payload.id])),
+    lastFetched: Date.now()
   };
 }
 

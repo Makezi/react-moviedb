@@ -5,7 +5,6 @@ import ContentCard from './ContentCard/ContentCard';
 const NowPlayingMoviesCarousel = ({ categoryList, moviesList }) => {
   const { isLoading, pages } = categoryList;
   if (isLoading || !pages[1]) return <div>Loading...</div>;
-  console.log(isLoading);
   const movieIds = categoryList.pages[1].ids;
   const movieCards = movieIds.map(id => moviesList.byId[id]);
 

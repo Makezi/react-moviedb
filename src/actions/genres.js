@@ -4,7 +4,7 @@ import {
   FETCH_MOVIE_GENRES,
   FETCH_SHOW_GENRES
 } from '../constants/action_types';
-import { BASE_API_URL, API_KEY } from '../constants/api';
+import { BASE_API_URL, API_KEY, API_CACHE_TIME } from '../constants/api';
 import { isLoading } from './action_helpers';
 
 export function fetchMovieGenres() {
@@ -18,7 +18,10 @@ export function fetchShowGenres() {
 }
 
 export function fetchData(url, action) {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const lastFetched = getState().genres.lastFetched;
+    const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
+    if (!isDataStale) return;
     dispatch(isLoading(GENRE_IS_LOADING, true));
     axios
       .get(url)
