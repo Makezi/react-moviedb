@@ -1,24 +1,16 @@
 import {
-  NOW_PLAYING_MOVIES_IS_LOADING,
-  POPULAR_MOVIES_IS_LOADING,
-  FETCH_NOW_PLAYING_MOVIES,
-  FETCH_POPULAR_MOVIES
+  ON_THE_AIR_SHOWS_IS_LOADING,
+  FETCH_ON_THE_AIR_SHOWS,
 } from '../../constants/action_types';
 import _ from 'lodash';
 
 const initialState = {
-  nowPlaying: {
+  onTheAir: {
     pages: {},
     totalPages: 0,
     totalResults: 0,
     isLoading: false
   },
-  popular: {
-    pages: {},
-    totalPages: 0,
-    totalResults: 0,
-    isLoading: false
-  }
 };
 
 function isLoading(state, action, category) {
@@ -45,16 +37,12 @@ function fetchCategory(state = initialState, action, category) {
   };
 }
 
-export function movieCategoriesReducer(state = initialState, action) {
+export function showCategoriesReducer(state = initialState, action) {
   switch (action.type) {
-    case NOW_PLAYING_MOVIES_IS_LOADING:
-      return isLoading(state, action, 'nowPlaying');
-    case POPULAR_MOVIES_IS_LOADING:
-      return isLoading(state, action, 'popular');
-    case FETCH_NOW_PLAYING_MOVIES:
-      return fetchCategory(state, action, "nowPlaying");
-    case FETCH_POPULAR_MOVIES:
-      return fetchCategory(state, action, "popular");
+    case ON_THE_AIR_SHOWS_IS_LOADING:
+      return isLoading(state, action, 'onTheAir');
+    case FETCH_ON_THE_AIR_SHOWS:
+      return fetchCategory(state, action, "onTheAir");
     default:
       return state;
   }

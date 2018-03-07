@@ -11,7 +11,9 @@ const ContentCard = ({ content }) => (
       }}
     >
       <div className="container">
-        <div className="title">{content.title}</div>
+        <div className="title">
+          {content.title ? content.title : content.name}
+        </div>
         <div className="year" />
       </div>
     </div>
