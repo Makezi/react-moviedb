@@ -13,7 +13,7 @@ const PopularMoviesCarousel = ({ categoryList, moviesList }) => {
       <h3>Popular Movies</h3>
       <Carousel>
         {movieCards.map(movie => (
-          <ContentCard key={movie.id} content={movie} />
+          <ContentCard key={movie.id} movie={movie} />
         ))}
       </Carousel>
     </div>

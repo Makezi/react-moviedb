@@ -13,7 +13,7 @@ const OnTheAirShowsCarousel = ({ categoryList, showsList }) => {
       <h3>On The Air Shows</h3>
       <Carousel>
         {showCards.map(show => (
-          <ContentCard key={show.id} content={show} />
+          <ContentCard key={show.id} show={show} />
         ))}
       </Carousel>
     </div>

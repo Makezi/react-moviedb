@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchMovie } from '../actions/movies';
-import { fetchMovieGenres, fetchShowGenres } from '../actions/genres';
-import { fetchNowPlayingMovies } from "../actions/categories";
+
 import MovieDetail from '../components/MovieDetail';
 
 class MovieDetailContainer extends Component {
   componentDidMount() {
-    this.props.fetchMovie(this.props.id);
-    this.props.fetchMovieGenres();
-    this.props.fetchShowGenres();
-    this.props.fetchNowPlayingMovies();
-    // this.props.fetchNowPlayingMovies(2);
-    // this.props.fetchNowPlayingMovies(99);
-    // this.props.fetchMovie(378111);
+    const { movies, id } = this.props;
+    if (!movies.byId[id]) this.props.fetchMovie(id);
   }
 
   render() {
+    const { movies } = this.props;
     return (
-      <MovieDetail
-        hasErrored={this.props.hasErrored}
-        isLoading={this.props.isLoading}
-        movie={this.props.movies.byId[this.props.id]}
-      />
+      <div>
+        <MovieDetail
+          isLoading={movies.isLoading}
+          movie={movies.byId[this.props.id]}
+        />
+      </div>
     );
   }
 }
@@ -34,9 +30,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  fetchMovie,
-  fetchMovieGenres,
-  fetchShowGenres,
-  fetchNowPlayingMovies
-})(MovieDetailContainer);
+export default connect(mapStateToProps, { fetchMovie })(MovieDetailContainer);

@@ -1,12 +1,8 @@
 import React from 'react';
 
-const MovieDetail = ({ isLoading, hasErrored, movie }) => {
-  if (hasErrored) {
-    return <p>Sorry! There was an error loading the movie</p>;
-  }
-  if (isLoading || !movie) {
-    return <p>Loading...</p>
-  }
+const MovieDetail = ({ isLoading, movie }) => {
+  if (isLoading || !movie) return <div>Loading...</div>
+
   return (
     <div>
       <h2>{movie.title}</h2>
