@@ -17,8 +17,8 @@ const Carousel = props => {
   }
 
   const settings = {
-    naturalSlideWidth: 180,
-    naturalSlideHeight: 250,
+    naturalSlideWidth: 160,
+    naturalSlideHeight: 240,
     totalSlides: props.children.length,
     visibleSlides: step,
     step: step

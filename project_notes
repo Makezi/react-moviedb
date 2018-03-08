@@ -1,3 +1,7 @@
-6 March
+8 March
 
-# Refactor fetch data reducer to a helper
+# Add header and footer components
+# Add Now Playing Page with pagination
+# Split carousel containers so you can see header of category AND spinner
+# Put in carousel spinner
+# Change content cards to include carousel image class instead?
