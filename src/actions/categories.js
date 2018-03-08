@@ -15,7 +15,8 @@ import { BASE_API_URL, API_KEY, API_CACHE_TIME } from '../constants/api';
 export function fetchNowPlayingMovies(page = 1) {
   const url = `${BASE_API_URL}movie/now_playing${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
-    const lastFetched = getState().categories.movies.nowPlaying.lastFetched;
+    const pageInfo = getState().categories.movies.nowPlaying.pages[page];
+    const lastFetched = pageInfo ? pageInfo.lastFetched : 0;
     const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
     if (!isDataStale) return;
     dispatch(isLoading(NOW_PLAYING_MOVIES_IS_LOADING, true));

@@ -17,10 +17,10 @@ const Header = () => (
         <NavLink exact to="/" className="navlink" activeClassName="selected">
           Home
         </NavLink>
-        <NavLink to="/movies" className="navlink" activeClassName="selected">
+        <NavLink to="/movie" className="navlink" activeClassName="selected">
           Movies
         </NavLink>
-        <NavLink to="/shows" className="navlink" activeClassName="selected">
+        <NavLink to="/show" className="navlink" activeClassName="selected">
           Shows
         </NavLink>
       </ul>

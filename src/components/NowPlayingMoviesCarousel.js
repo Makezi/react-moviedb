@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Carousel from './Carousel';
 import ContentCard from './ContentCard/ContentCard';
 
@@ -10,11 +11,11 @@ const NowPlayingMoviesCarousel = ({ categoryList, moviesList }) => {
 
   return (
     <div>
-      <h3>Now Playing Movies</h3>
+      <Link to="/movie/now-playing">
+        <h3>Now Playing Movies</h3>
+      </Link>
       <Carousel>
-        {movieCards.map(movie => (
-          <ContentCard key={movie.id} movie={movie} />
-        ))}
+        {movieCards.map(movie => <ContentCard key={movie.id} movie={movie} />)}
       </Carousel>
     </div>
   );
