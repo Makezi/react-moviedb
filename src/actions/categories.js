@@ -42,7 +42,8 @@ export function fetchNowPlayingMovies(page = 1) {
 export function fetchPopularMovies(page = 1) {
   const url = `${BASE_API_URL}movie/popular${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
-    const lastFetched = getState().categories.movies.popular.lastFetched;
+    const pageInfo = getState().categories.movies.popular.pages[page];
+    const lastFetched = pageInfo ? pageInfo.lastFetched : 0;
     const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
     if (!isDataStale) return;
     dispatch(isLoading(POPULAR_MOVIES_IS_LOADING, true));
@@ -68,7 +69,8 @@ export function fetchPopularMovies(page = 1) {
 export function fetchOnTheAirShows(page = 1) {
   const url = `${BASE_API_URL}tv/on_the_air${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
-    const lastFetched = getState().categories.shows.onTheAir.lastFetched;
+    const pageInfo = getState().categories.shows.onTheAir.pages[page];
+    const lastFetched = pageInfo ? pageInfo.lastFetched : 0;
     const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
     if (!isDataStale) return;
     dispatch(isLoading(ON_THE_AIR_SHOWS_IS_LOADING, true));

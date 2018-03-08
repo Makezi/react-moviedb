@@ -10,7 +10,6 @@ const initialState = {
     totalPages: 0,
     totalResults: 0,
     isLoading: false,
-    lastFetched: 0
   },
 };
 
@@ -28,13 +27,13 @@ function fetchCategory(state = initialState, action, category) {
       pages: {
         [action.payload.page]: {
           page: action.payload.page,
-          ids: action.payload.results.map(movie => movie.id)
+          ids: action.payload.results.map(movie => movie.id),
+          lastFetched: Date.now()
         }
       },
       totalPages: action.payload.total_pages,
       totalResults: action.payload.total_results,
       isLoading: state[category].isLoading,
-      lastFetched: Date.now()
     })
   };
 }

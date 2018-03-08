@@ -8,16 +8,16 @@ const NowPlayingMoviesList = ({ categoryList, moviesList, pageId }) => {
   if (isLoading || !pages[pageId]) return <div>Loading...</div>;
   const movieIds = categoryList.pages[pageId].ids;
   const movieCards = movieIds.map(id => moviesList.byId[id]);
-  const prevPage = +pageId - 1;
-  const nextPage = +pageId + 1;
+  // const prevPage = +pageId - 1;
+  // const nextPage = +pageId + 1;
 
   return (
     <div>
       <div className="content-list">
         {movieCards.map(movie => <ContentCard key={movie.id} movie={movie} />)}
       </div>
-      <Link to={`/movie/now-playing/${prevPage}`}>Previous</Link>
-      <Link to={`/movie/now-playing/${nextPage}`}>Next</Link>
+      {/* <Link to={`/movie/now-playing/${prevPage}`}>Previous</Link>
+      <Link to={`/movie/now-playing/${nextPage}`}>Next</Link> */}
     </div>
   );
 };

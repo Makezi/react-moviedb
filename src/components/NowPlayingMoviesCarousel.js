@@ -11,7 +11,7 @@ const NowPlayingMoviesCarousel = ({ categoryList, moviesList }) => {
 
   return (
     <div>
-      <Link to="/movie/now-playing">
+      <Link to="/movie/now-playing/1">
         <h3>Now Playing Movies</h3>
       </Link>
       <Carousel>
