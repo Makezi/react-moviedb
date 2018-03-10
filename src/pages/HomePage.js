@@ -1,15 +1,17 @@
-import React from "react";
-import Header from "../components/Header/";
-import NowPlayingMoviesCarouselContainer from '../containers/NowPlayingMoviesCarouselContainer';
-import PopularMoviesCarouselContainer from '../containers/PopularMoviesCarouselContainer';
-import OnTheAirShowCarouselContainer from '../containers/OnTheAirShowsCarouselContainer';
+import React from 'react';
+import Header from '../components/Header/';
+import CategoryListContainer from "../containers/CategoryListContainer";
+// import NowPlayingMoviesCarouselContainer from '../containers/NowPlayingMoviesCarouselContainer';
+// import PopularMoviesCarouselContainer from '../containers/PopularMoviesCarouselContainer';
+// import OnTheAirShowCarouselContainer from '../containers/OnTheAirShowsCarouselContainer';
 
 const HomePage = () => (
   <div>
     <Header />
-    <NowPlayingMoviesCarouselContainer />
+    <CategoryListContainer />
+    {/* <NowPlayingMoviesCarouselContainer />
     <PopularMoviesCarouselContainer />
-    <OnTheAirShowCarouselContainer />
+    <OnTheAirShowCarouselContainer /> */}
   </div>
 );
 

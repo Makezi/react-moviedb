@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { BASE_API_IMG_URL } from '../../constants/api';
 import './ContentCard.css';
 
-const ContentCard = ({ movie, show }) => {
-  const content = movie ? movie : show;
+const ContentCard = ({ content }) => {
+  // const content = movie ? movie : show;
   return (
     <div className="card">
-      <Link to={movie ? `/movie/${movie.id}` : `/show/${show.id}`}>
+      {/* <Link to={movie ? `/movie/${movie.id}` : `/show/${show.id}`}> */}
         <div
           className="backdrop"
           style={{
@@ -21,7 +21,7 @@ const ContentCard = ({ movie, show }) => {
             <div className="year" />
           </div>
         </div>
-      </Link>
+      {/* </Link> */}
     </div>
   );
 };
