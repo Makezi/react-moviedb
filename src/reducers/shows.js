@@ -14,15 +14,11 @@ const initialState = {
 };
 
 function fetchShow(state = initialState, action) {
-  // let genres = action.payload.genres
-  //   ? action.payload.genres.map(genre => genre.id)
-  //   : action.payload_genre_ids;
   let show = action.payload;
   delete show['genre_ids'];
   return {
     ...state,
     byId: _.merge({}, state.byId, {
-      // [action.payload.id]: { ...show, genres, type: "show" }
       [action.payload.id]: { ...show, type: 'show', lastFetched: Date.now() }
     }),
     allIds: Array.from(new Set([...state.allIds, action.payload.id])),

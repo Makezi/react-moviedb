@@ -1,8 +1,3 @@
-// Genre actions
-export const FETCH_MOVIE_GENRES = 'FETCH_MOVIE_GENRES';
-export const FETCH_SHOW_GENRES = 'FETCH_SHOW_GENRES';
-export const GENRE_IS_LOADING = 'GENRE_IS_LOADING';
-
 // Movie actions
 export const FETCH_MOVIE = 'FETCH_MOVIE';
 export const STORE_MOVIE = 'STORE_MOVIE';
