@@ -4,10 +4,10 @@ import { BASE_API_IMG_URL } from '../../constants/api';
 import './ContentCard.css';
 
 const ContentCard = ({ content }) => {
-  // const content = movie ? movie : show;
+  const { type } = content;
   return (
     <div className="card">
-      {/* <Link to={movie ? `/movie/${movie.id}` : `/show/${show.id}`}> */}
+      <Link to={type === "movie" ? `/movie/${content.id}` : `/show/${content.id}`}>
         <div
           className="backdrop"
           style={{
@@ -21,7 +21,7 @@ const ContentCard = ({ content }) => {
             <div className="year" />
           </div>
         </div>
-      {/* </Link> */}
+      </Link>
     </div>
   );
 };

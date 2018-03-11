@@ -11,7 +11,7 @@ class CategoryPage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.match.params.page != this.props.match.params.page) {
+    if (nextProps.match.params.page !== this.props.match.params.page) {
       this.props.fetchCategory(nextProps.match.params.page);
     }
   }

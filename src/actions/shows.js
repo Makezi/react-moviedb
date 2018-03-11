@@ -5,12 +5,9 @@ import { isLoading } from './action_helpers';
 
 export function fetchShow(id) {
   const url = `${BASE_API_URL}tv/${id}${API_KEY}`;
-  return fetchData(url, FETCH_SHOW);
-}
-
-export function fetchData(url, action) {
   return (dispatch, getState) => {
-    const lastFetched = getState().shows.lastFetched;
+    const show = getState().shows.byId[id];
+    const lastFetched = show ? show.lastFetched : 0;
     const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
     if (!isDataStale) return;
     dispatch(isLoading(SHOW_IS_LOADING, true));
@@ -25,10 +22,14 @@ export function fetchData(url, action) {
       })
       .then(response =>
         dispatch({
-          type: action,
+          type: FETCH_SHOW,
           payload: response.data
         })
       )
       .catch(error => console.error(error));
   };
+}
+
+export function fetchData(url, action) {
+  
 }

@@ -5,12 +5,9 @@ import { isLoading } from './action_helpers';
 
 export function fetchMovie(id) {
   const url = `${BASE_API_URL}movie/${id}${API_KEY}`;
-  return fetchData(url, FETCH_MOVIE);
-}
-
-export function fetchData(url, action) {
   return (dispatch, getState) => {
-    const lastFetched = getState().movies.lastFetched;
+    const movie = getState().movies.byId[id];
+    const lastFetched = movie ? movie.lastFetched : 0;
     const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
     if (!isDataStale) return;
     dispatch(isLoading(MOVIE_IS_LOADING, true));
@@ -25,7 +22,7 @@ export function fetchData(url, action) {
       })
       .then(response =>
         dispatch({
-          type: action,
+          type: FETCH_MOVIE,
           payload: response.data
         })
       )

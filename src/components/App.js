@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
-import MoviePage from '../pages/MoviePage';
+import MoviePage from '../containers/pages/MoviePage';
+import ShowPage from '../containers/pages/ShowPage';
 import CategoryPage from '../containers/pages/CategoryPage';
 import {
   fetchNowPlayingMovies,
   fetchPopularMovies,
   fetchOnTheAirShows
 } from '../actions/categories';
-import ShowPage from '../pages/ShowPage';
 
 const App = () => (
   <BrowserRouter>

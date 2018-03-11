@@ -4,4 +4,4 @@ import { shows } from "./shows";
 import { genres } from './genres';
 import { categories } from "./categories/";
 
-export default combineReducers({ movies, shows, genres, categories });
+export default combineReducers({ movies, shows, categories });
