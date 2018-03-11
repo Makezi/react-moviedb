@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchNowPlayingMovies } from '../../actions/categories';
 import Header from '../../components/Header/';
 import ContentList from '../../components/ContentList/';
 import Paginator from '../../components/Paginator';
 
-class NowPlayingMoviesPage extends Component {
+class CategoryPage extends Component {
   componentDidMount() {
     const page = this.props.match.params.page || 1;
-    this.props.fetchNowPlayingMovies(page);
+    this.props.fetchCategory(page);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.page != this.props.match.params.page) {
-      this.props.fetchNowPlayingMovies(nextProps.match.params.page);
+      this.props.fetchCategory(nextProps.match.params.page);
     }
   }
 
   render() {
-    const { moviesList, nowPlayingMovies } = this.props;
-    const { params } = this.props.match;
+    const { contentList, categoryList } = this.props;
+    const { params, path } = this.props.match;
+    const basePath = path.substring(0, path.indexOf(':'));
     const pageId = params.page || 1;
     const nextPageId = +pageId + 1;
     const prevPageId = +pageId - 1;
-    const basePath = '/movie/now-playing/';
-    const { totalPages, totalResults } = nowPlayingMovies;
+    const { totalPages, totalResults } = categoryList;
 
     return (
       <div>
         <Header />
         <ContentList
-          categoryList={nowPlayingMovies}
-          contentList={moviesList}
+          categoryList={categoryList}
+          contentList={contentList}
           pageId={pageId}
         />
         <Paginator
@@ -46,13 +45,19 @@ class NowPlayingMoviesPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const { namespace, category } = ownProps;
   return {
-    moviesList: state.movies,
-    nowPlayingMovies: state.categories.movies.nowPlaying
+    contentList: state[namespace],
+    categoryList: state.categories[namespace][category]
   };
 };
 
-export default connect(mapStateToProps, { fetchNowPlayingMovies })(
-  NowPlayingMoviesPage
-);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { action } = ownProps;
+  return {
+    fetchCategory: id => dispatch(action(id))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage);

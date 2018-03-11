@@ -1,17 +1,11 @@
 import React from 'react';
 import Header from '../components/Header/';
-import CategoryListContainer from "../containers/CategoryListContainer";
-// import NowPlayingMoviesCarouselContainer from '../containers/NowPlayingMoviesCarouselContainer';
-// import PopularMoviesCarouselContainer from '../containers/PopularMoviesCarouselContainer';
-// import OnTheAirShowCarouselContainer from '../containers/OnTheAirShowsCarouselContainer';
+import CategoryListContainer from '../containers/CategoryListContainer';
 
 const HomePage = () => (
   <div>
     <Header />
     <CategoryListContainer />
-    {/* <NowPlayingMoviesCarouselContainer />
-    <PopularMoviesCarouselContainer />
-    <OnTheAirShowCarouselContainer /> */}
   </div>
 );
 
