@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchNowPlayingMovies } from '../actions/categories';
-import NowPlayingMoviesList from '../components/NowPlayingMoviesList/';
-import Paginator from '../components/Paginator';
+import { fetchNowPlayingMovies } from '../../actions/categories';
+import Header from '../../components/Header/';
+import ContentList from '../../components/ContentList/';
+import Paginator from '../../components/Paginator';
 
-class NowPlayingMoviesListContainer extends Component {
+class NowPlayingMoviesPage extends Component {
   componentDidMount() {
     const page = this.props.match.params.page || 1;
     this.props.fetchNowPlayingMovies(page);
@@ -17,20 +18,20 @@ class NowPlayingMoviesListContainer extends Component {
   }
 
   render() {
-    const { moviesList } = this.props;
-    const { categoryList } = this.props;
+    const { moviesList, nowPlayingMovies } = this.props;
     const { params } = this.props.match;
     const pageId = params.page || 1;
     const nextPageId = +pageId + 1;
     const prevPageId = +pageId - 1;
-    const basePath = "/movie/now-playing/";
-    const { totalPages, totalResults } = categoryList;
+    const basePath = '/movie/now-playing/';
+    const { totalPages, totalResults } = nowPlayingMovies;
 
     return (
       <div>
-        <NowPlayingMoviesList
-          categoryList={categoryList}
-          moviesList={moviesList}
+        <Header />
+        <ContentList
+          categoryList={nowPlayingMovies}
+          contentList={moviesList}
           pageId={pageId}
         />
         <Paginator
@@ -48,10 +49,10 @@ class NowPlayingMoviesListContainer extends Component {
 const mapStateToProps = state => {
   return {
     moviesList: state.movies,
-    categoryList: state.categories.movies['nowPlaying']
+    nowPlayingMovies: state.categories.movies.nowPlaying
   };
 };
 
 export default connect(mapStateToProps, { fetchNowPlayingMovies })(
-  NowPlayingMoviesListContainer
+  NowPlayingMoviesPage
 );
