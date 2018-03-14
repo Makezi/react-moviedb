@@ -1,4 +1,4 @@
-# React MovieDB
+# React MovieDB WIP
 
 A movies and shows database application built using React/Redux and TheMovieDB API.
 
