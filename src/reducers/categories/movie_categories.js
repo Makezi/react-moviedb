@@ -11,13 +11,13 @@ const initialState = {
     pages: {},
     totalPages: 0,
     totalResults: 0,
-    isLoading: false,
+    isLoading: false
   },
   popular: {
     pages: {},
     totalPages: 0,
     totalResults: 0,
-    isLoading: false,
+    isLoading: false
   }
 };
 
@@ -38,11 +38,12 @@ function fetchCategory(state = initialState, action, category) {
           page: action.payload.page,
           ids: action.payload.results.map(movie => movie.id),
           lastFetched: Date.now()
-        },
+        }
       },
-      totalPages: action.payload.total_pages,
+      totalPages:
+        action.payload.total_pages <= 1000 ? action.payload.total_pages : 1000,
       totalResults: action.payload.total_results,
-      isLoading: state[category].isLoading,
+      isLoading: state[category].isLoading
     })
   };
 }
@@ -54,9 +55,9 @@ export function movieCategoriesReducer(state = initialState, action) {
     case POPULAR_MOVIES_IS_LOADING:
       return isLoading(state, action, 'popular');
     case FETCH_NOW_PLAYING_MOVIES:
-      return fetchCategory(state, action, "nowPlaying");
+      return fetchCategory(state, action, 'nowPlaying');
     case FETCH_POPULAR_MOVIES:
-      return fetchCategory(state, action, "popular");
+      return fetchCategory(state, action, 'popular');
     default:
       return state;
   }

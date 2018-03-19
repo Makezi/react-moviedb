@@ -2,7 +2,7 @@ import {
   DISCOVER_MOVIES_IS_LOADING,
   DISCOVER_SHOWS_IS_LOADING,
   FETCH_DISCOVER_MOVIES,
-  FETCH_DISCOVER_SHOWS,
+  FETCH_DISCOVER_SHOWS
 } from '../constants/action_types';
 import _ from 'lodash';
 
@@ -40,7 +40,8 @@ function fetchDiscover(state = initialState, action, type) {
           lastFetched: Date.now()
         }
       },
-      totalPages: action.payload.total_pages,
+      totalPages:
+        action.payload.total_pages <= 1000 ? action.payload.total_pages : 1000,
       totalResults: action.payload.total_results,
       isLoading: state[type].isLoading
     })

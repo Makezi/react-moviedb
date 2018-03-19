@@ -1,6 +1,6 @@
 import {
   ON_THE_AIR_SHOWS_IS_LOADING,
-  FETCH_ON_THE_AIR_SHOWS,
+  FETCH_ON_THE_AIR_SHOWS
 } from '../../constants/action_types';
 import _ from 'lodash';
 
@@ -9,8 +9,8 @@ const initialState = {
     pages: {},
     totalPages: 0,
     totalResults: 0,
-    isLoading: false,
-  },
+    isLoading: false
+  }
 };
 
 function isLoading(state, action, category) {
@@ -31,9 +31,10 @@ function fetchCategory(state = initialState, action, category) {
           lastFetched: Date.now()
         }
       },
-      totalPages: action.payload.total_pages,
+      totalPages:
+        action.payload.total_pages <= 1000 ? action.payload.total_pages : 1000,
       totalResults: action.payload.total_results,
-      isLoading: state[category].isLoading,
+      isLoading: state[category].isLoading
     })
   };
 }
@@ -43,7 +44,7 @@ export function showCategoriesReducer(state = initialState, action) {
     case ON_THE_AIR_SHOWS_IS_LOADING:
       return isLoading(state, action, 'onTheAir');
     case FETCH_ON_THE_AIR_SHOWS:
-      return fetchCategory(state, action, "onTheAir");
+      return fetchCategory(state, action, 'onTheAir');
     default:
       return state;
   }
