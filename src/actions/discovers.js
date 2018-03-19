@@ -3,16 +3,18 @@ import {
   DISCOVER_MOVIES_IS_LOADING,
   DISCOVER_SHOWS_IS_LOADING,
   FETCH_DISCOVER_MOVIES,
-  FETCH_DISCOVER_SHOWS
+  FETCH_DISCOVER_SHOWS,
+  STORE_MOVIE,
+  STORE_SHOW
 } from '../constants/action_types';
 import { BASE_API_URL, API_KEY, API_CACHE_TIME } from '../constants/api';
 import { isLoading } from './action_helpers';
 
-export function fetchDiscoverShows() {
-  const url = `${BASE_API_URL}discover/movie/${API_KEY}`;
+export function fetchDiscoverShows(page = 1) {
+  const url = `${BASE_API_URL}discover/tv${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
-    const show = getState().shows.byId[id];
-    const lastFetched = show ? show.lastFetched : 0;
+    const pageInfo = getState().discovers.shows.pages[page];
+    const lastFetched = pageInfo ? pageInfo.lastFetched : 0;
     const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
     if (!isDataStale) return;
     dispatch(isLoading(DISCOVER_SHOWS_IS_LOADING, true));
@@ -22,24 +24,24 @@ export function fetchDiscoverShows() {
         if (response.status !== 200) {
           throw Error(response.statusText);
         }
-        dispatch(isLoading(DISCOVER_SHOWS_IS_LOADING, false));
         return response;
       })
-      .then(response =>
-        dispatch({
-          type: FETCH_DISCOVER_SHOWS,
-          payload: response.data
-        })
-      )
+      .then(response => {
+        dispatch({ type: FETCH_DISCOVER_SHOWS, payload: response.data });
+        response.data.results.forEach(result =>
+          dispatch({ type: STORE_SHOW, payload: result })
+        );
+      })
+      .then(() => dispatch(isLoading(DISCOVER_SHOWS_IS_LOADING, false)))
       .catch(error => console.error(error));
   };
 }
 
-export function fetchDiscoverMovies() {
-  const url = `${BASE_API_URL}discover/movie/${API_KEY}`;
+export function fetchDiscoverMovies(page = 1) {
+  const url = `${BASE_API_URL}discover/movie${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
-    const movie = getState().movies.byId[id];
-    const lastFetched = movie ? movie.lastFetched : 0;
+    const pageInfo = getState().discovers.movies.pages[page];
+    const lastFetched = pageInfo ? pageInfo.lastFetched : 0;
     const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
     if (!isDataStale) return;
     dispatch(isLoading(DISCOVER_MOVIES_IS_LOADING, true));
@@ -49,15 +51,15 @@ export function fetchDiscoverMovies() {
         if (response.status !== 200) {
           throw Error(response.statusText);
         }
-        dispatch(isLoading(DISCOVER_MOVIES_IS_LOADING, false));
         return response;
       })
-      .then(response =>
-        dispatch({
-          type: FETCH_DISCOVER_MOVIE,
-          payload: response.data
-        })
-      )
+      .then(response => {
+        dispatch({ type: FETCH_DISCOVER_MOVIES, payload: response.data });
+        response.data.results.forEach(result =>
+          dispatch({ type: STORE_MOVIE, payload: result })
+        );
+      })
+      .then(() => dispatch(isLoading(DISCOVER_MOVIES_IS_LOADING, false)))
       .catch(error => console.error(error));
   };
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
+import DiscoverMoviesPage from "../containers/pages/DiscoverMoviesPage";
+import DiscoverShowsPage from "../containers/pages/DiscoverShowsPage";
 import MoviePage from '../containers/pages/MoviePage';
 import ShowPage from '../containers/pages/ShowPage';
 import CategoryPage from '../containers/pages/CategoryPage';
@@ -49,6 +51,8 @@ const App = () => (
       />
       <Route path="/movie/:id" component={MoviePage} />
       <Route path="/show/:id" component={ShowPage} />
+      <Route path="/movies/:page" component={DiscoverMoviesPage} />
+      <Route path="/shows/:page" component={DiscoverShowsPage} />
     </Switch>
   </BrowserRouter>
 );

@@ -2,7 +2,7 @@ import {
   DISCOVER_MOVIES_IS_LOADING,
   DISCOVER_SHOWS_IS_LOADING,
   FETCH_DISCOVER_MOVIES,
-  FETCH_DISCOVER_SHOWS
+  FETCH_DISCOVER_SHOWS,
 } from '../constants/action_types';
 import _ from 'lodash';
 
