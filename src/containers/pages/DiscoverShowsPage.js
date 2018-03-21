@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchDiscoverShows } from '../../actions/discovers';
-import Header from '../../components/Header/';
 import ContentList from '../../components/ContentList/';
 import Paginator from '../../components/Paginator';
 
@@ -28,7 +27,6 @@ class DiscoverShowsPage extends Component {
 
     return (
       <div>
-        <Header />
         <ContentList
           categoryList={discoverShowsList}
           contentList={showsList}

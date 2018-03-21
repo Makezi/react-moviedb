@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../../components/Header/';
 import ContentList from '../../components/ContentList/';
 import Paginator from '../../components/Paginator';
 
@@ -27,7 +26,6 @@ class CategoryPage extends Component {
 
     return (
       <div>
-        <Header />
         <ContentList
           categoryList={categoryList}
           contentList={contentList}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchShow } from '../../actions/shows';
-import Header from '../../components/Header/';
 import ContentDetail from '../../components/ContentDetail';
 
 class ShowPage extends Component {
@@ -17,7 +16,6 @@ class ShowPage extends Component {
     const content = showsList.byId[id];
     return (
       <div>
-        <Header />
         <ContentDetail isLoading={isLoading} content={content} />
       </div>
     );

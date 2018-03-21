@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchMovie } from '../../actions/movies';
-import Header from '../../components/Header/';
 import ContentDetail from '../../components/ContentDetail';
 
 class MoviePage extends Component {
@@ -17,7 +16,6 @@ class MoviePage extends Component {
     const content = moviesList.byId[id];
     return (
       <div>
-        <Header />
         <ContentDetail isLoading={isLoading} content={content} />
       </div>
     );
