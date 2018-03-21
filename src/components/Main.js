@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import DiscoverPage from '../containers/pages/DiscoverPage';
 import CategoryPage from '../containers/pages/CategoryPage';

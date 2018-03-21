@@ -27,7 +27,7 @@ class DiscoverPage extends Component {
     return (
       <div>
         <ContentList
-          categoryList={discoverList}
+          paginatedList={discoverList}
           contentList={contentList}
           pageId={pageId}
         />

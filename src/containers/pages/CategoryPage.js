@@ -27,7 +27,7 @@ class CategoryPage extends Component {
     return (
       <div>
         <ContentList
-          categoryList={categoryList}
+          paginatedList={categoryList}
           contentList={contentList}
           pageId={pageId}
         />

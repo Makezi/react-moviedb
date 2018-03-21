@@ -2,10 +2,10 @@ import React from 'react';
 import ContentCard from "../ContentCard";
 import "./ContentList.css";
 
-const ContentList = ({ categoryList, contentList, pageId }) => {
-  const { isLoading, pages } = categoryList;
+const ContentList = ({ paginatedList, contentList, pageId }) => {
+  const { isLoading, pages } = paginatedList;
   if (isLoading || !pages[pageId]) return <div>Loading...</div>;
-  const contentIds = categoryList.pages[pageId].ids;
+  const contentIds = paginatedList.pages[pageId].ids;
   const contentCards = contentIds.map(id => contentList.byId[id]);
 
   return (
