@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import "./Header.css";
+import SearchBar from '../SearchBar';
+import './Header.css';
 
 const Header = () => (
   <div>
@@ -24,6 +25,9 @@ const Header = () => (
           Shows
         </NavLink>
       </ul>
+    </div>
+    <div className="search">
+      <SearchBar />
     </div>
   </div>
 );
