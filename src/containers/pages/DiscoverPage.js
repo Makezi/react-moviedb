@@ -4,13 +4,19 @@ import ContentList from '../../components/ContentList';
 import Paginator from '../../components/Paginator';
 
 class DiscoverPage extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const page = this.props.match.params.page || 1;
     this.props.fetchDiscover(page);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.match.params.page !== this.props.match.params.page) {
+    if (nextProps.match !== this.props.match) {
+      this.props.fetchDiscover(nextProps.match.params.page);
+    }
+  }
+
+  componentDidUpdate(nextProps) {
+    if (nextProps.match !== this.props.match) {
       this.props.fetchDiscover(nextProps.match.params.page);
     }
   }

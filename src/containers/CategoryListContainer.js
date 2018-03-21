@@ -27,19 +27,19 @@ class CategoryListContainer extends Component {
       <div className="categories-list">
         <CategoryCarousel
           title={'Now Playing Movies'}
-          viewMoreUrl={'/movie/now-playing/1'}
+          viewMoreUrl={'/movies/now-playing'}
           categoryList={nowPlayingMovies}
           contentList={moviesList}
         />
         <CategoryCarousel
           title={'Popular Movies'}
-          viewMoreUrl={'/movie/popular/1'}
+          viewMoreUrl={'/movies/popular'}
           categoryList={popularMovies}
           contentList={moviesList}
         />
         <CategoryCarousel
           title={'On The Air Shows'}
-          viewMoreUrl={'/show/on-air/1'}
+          viewMoreUrl={'/shows/on-air'}
           categoryList={onTheAirShows}
           contentList={showsList}
         />

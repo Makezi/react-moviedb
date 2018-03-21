@@ -7,7 +7,13 @@ const ContentCard = ({ content }) => {
   const { type } = content;
   return (
     <div className="card">
-      <Link to={type === "movie" ? `/movie/${content.id}` : `/show/${content.id}`}>
+      <Link
+        to={
+          type === 'movie'
+            ? `/movies/id/${content.id}`
+            : `/shows/id/${content.id}`
+        }
+      >
         <div
           className="backdrop"
           style={{

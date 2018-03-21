@@ -8,15 +8,13 @@ import {
   STORE_SHOW
 } from '../constants/action_types';
 import { BASE_API_URL, API_KEY, API_CACHE_TIME } from '../constants/api';
-import { isLoading } from './action_helpers';
+import { isLoading, isDataStale } from './action_helpers';
 
 export function fetchDiscoverShows(page = 1) {
   const url = `${BASE_API_URL}discover/tv${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
     const pageInfo = getState().discovers.shows.pages[page];
-    const lastFetched = pageInfo ? pageInfo.lastFetched : 0;
-    const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
-    if (!isDataStale) return;
+    if (!isDataStale(pageInfo)) return;
     dispatch(isLoading(DISCOVER_SHOWS_IS_LOADING, true));
     axios
       .get(url)
@@ -41,9 +39,7 @@ export function fetchDiscoverMovies(page = 1) {
   const url = `${BASE_API_URL}discover/movie${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
     const pageInfo = getState().discovers.movies.pages[page];
-    const lastFetched = pageInfo ? pageInfo.lastFetched : 0;
-    const isDataStale = Date.now() - lastFetched > lastFetched + API_CACHE_TIME;
-    if (!isDataStale) return;
+    if (!isDataStale(pageInfo)) return;
     dispatch(isLoading(DISCOVER_MOVIES_IS_LOADING, true));
     axios
       .get(url)

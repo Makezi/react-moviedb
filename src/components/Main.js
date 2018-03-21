@@ -18,7 +18,7 @@ const Main = () => (
     <Switch>
       <Route path="/" exact component={HomePage} />
       <Route
-        path="/movie/now-playing/:page"
+        path="/movies/now-playing/:page?"
         render={props => (
           <CategoryPage
             {...props}
@@ -29,7 +29,7 @@ const Main = () => (
         )}
       />
       <Route
-        path="/movie/popular/:page"
+        path="/movies/popular/:page?"
         render={props => (
           <CategoryPage
             {...props}
@@ -40,7 +40,7 @@ const Main = () => (
         )}
       />
       <Route
-        path="/show/on-air/:page"
+        path="/shows/on-air/:page?"
         render={props => (
           <CategoryPage
             {...props}
@@ -51,19 +51,19 @@ const Main = () => (
         )}
       />
       <Route
-        path="/movie/:id"
+        path="/movies/id/:id"
         render={props => (
           <ContentPage {...props} namespace={'movies'} action={fetchMovie} />
         )}
       />
       <Route
-        path="/show/:id"
+        path="/shows/id/:id"
         render={props => (
           <ContentPage {...props} namespace={'shows'} action={fetchShow} />
         )}
       />
       <Route
-        path="/movies/:page"
+        path="/movies/:page?"
         render={props => (
           <DiscoverPage
             {...props}
@@ -73,7 +73,7 @@ const Main = () => (
         )}
       />
       <Route
-        path="/shows/:page"
+        path="/shows/:page?"
         render={props => (
           <DiscoverPage
             {...props}
