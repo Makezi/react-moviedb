@@ -2,15 +2,16 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import DiscoverPage from '../containers/pages/DiscoverPage';
-import MoviePage from '../containers/pages/MoviePage';
-import ShowPage from '../containers/pages/ShowPage';
 import CategoryPage from '../containers/pages/CategoryPage';
+import ContentPage from '../containers/pages/ContentPage';
 import {
   fetchNowPlayingMovies,
   fetchPopularMovies,
   fetchOnTheAirShows
 } from '../actions/categories';
 import { fetchDiscoverMovies, fetchDiscoverShows } from '../actions/discovers';
+import { fetchMovie } from '../actions/movies';
+import { fetchShow } from '../actions/shows';
 
 const Main = () => (
   <main>
@@ -49,8 +50,18 @@ const Main = () => (
           />
         )}
       />
-      <Route path="/movie/:id" component={MoviePage} />
-      <Route path="/show/:id" component={ShowPage} />
+      <Route
+        path="/movie/:id"
+        render={props => (
+          <ContentPage {...props} namespace={'movies'} action={fetchMovie} />
+        )}
+      />
+      <Route
+        path="/show/:id"
+        render={props => (
+          <ContentPage {...props} namespace={'shows'} action={fetchShow} />
+        )}
+      />
       <Route
         path="/movies/:page"
         render={props => (
