@@ -4,12 +4,12 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = { query: '' };
-
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleInputChange(event) {
     this.setState({ query: event.target.value });
+    this.props.onSearchQueryChange(this.state.query);
   }
 
   render() {
@@ -18,9 +18,9 @@ class SearchBar extends Component {
         <input
           type="text"
           placeholder="Search..."
+          value={this.state.query}
           onChange={this.handleInputChange}
         />
-        <p>{this.state.query}</p>
       </form>
     );
   }
