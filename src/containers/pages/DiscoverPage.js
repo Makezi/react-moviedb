@@ -1,35 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchDiscoverShows } from '../../actions/discovers';
-import ContentList from '../../components/ContentList/';
+import ContentList from '../../components/ContentList';
 import Paginator from '../../components/Paginator';
 
-class DiscoverShowsPage extends Component {
+class DiscoverPage extends Component {
   componentDidMount() {
     const page = this.props.match.params.page || 1;
-    this.props.fetchDiscoverShows(page);
+    this.props.fetchDiscover(page);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.page !== this.props.match.params.page) {
-      this.props.fetchDiscoverShows(nextProps.match.params.page);
+      this.props.fetchDiscover(nextProps.match.params.page);
     }
   }
 
   render() {
-    const { showsList, discoverShowsList } = this.props;
+    const { contentList, discoverList } = this.props;
     const { params, path } = this.props.match;
     const basePath = path.substring(0, path.indexOf(':'));
     const pageId = params.page || 1;
     const nextPageId = +pageId + 1;
     const prevPageId = +pageId - 1;
-    const { totalPages, totalResults } = discoverShowsList;
+    const { totalPages, totalResults } = discoverList;
 
     return (
       <div>
         <ContentList
-          categoryList={discoverShowsList}
-          contentList={showsList}
+          categoryList={discoverList}
+          contentList={contentList}
           pageId={pageId}
         />
         <Paginator
@@ -44,13 +43,19 @@ class DiscoverShowsPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const { namespace } = ownProps;
   return {
-    showsList: state.shows,
-    discoverShowsList: state.discovers.shows
+    contentList: state[namespace],
+    discoverList: state.discovers[namespace]
   };
 };
 
-export default connect(mapStateToProps, { fetchDiscoverShows })(
-  DiscoverShowsPage
-);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { action } = ownProps;
+  return {
+    fetchDiscover: page => dispatch(action(page))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DiscoverPage);

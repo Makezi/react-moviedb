@@ -54,7 +54,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const { action } = ownProps;
   return {
-    fetchCategory: id => dispatch(action(id))
+    fetchCategory: page => dispatch(action(page))
   };
 };
 
