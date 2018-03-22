@@ -1,15 +1,9 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Header from './Header';
-import Main from './Main';
+import React from "react";
 
 const App = () => (
-  <BrowserRouter>
-    <div>
-      <Header />
-      <Main />
-    </div>
-  </BrowserRouter>
+  <div>
+    Hello world
+  </div>
 );
 
 export default App;
