@@ -1,20 +1,28 @@
 import { FETCH_MOVIE, FETCH_MOVIE_IS_LOADING } from '../constants/action_types';
 
-function fetchMovieIsLoading(state = [], action) {
+const initialState = {
+  byId: [],
+  isLoading: false
+};
+
+function fetchMovieIsLoading(state = initialState, action) {
   return {
     ...state,
     isLoading: action.payload
   };
 }
 
-function fetchMovie(state = [], action) {
+function fetchMovie(state = initialState, action) {
   return {
     ...state,
-    byId: { ...state.byId, [action.payload.id]: action.payload }
+    byId: {
+      ...state.byId,
+      [action.payload.id]: { ...action.payload, lastFetched: Date.now() }
+    }
   };
 }
 
-export function moviesReducer(state = [], action) {
+export function moviesReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_MOVIE_IS_LOADING:
       return fetchMovieIsLoading(state, action);
