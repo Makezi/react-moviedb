@@ -8,8 +8,7 @@ function fetchMovieIsLoading(state = [], action) {
 }
 
 function fetchMovie(state = [], action) {
-  console.log(action);
-  return state;
+  return { ...state, result: action.payload };
 }
 
 export function moviesReducer(state = [], action) {
