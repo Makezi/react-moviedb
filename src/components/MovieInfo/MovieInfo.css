@@ -1,0 +1,9 @@
+.movie-info {
+  display: flex;
+  flex-direction: row;
+  outline: 2px solid red;
+}
+
+.movie-info > .movie-details {
+  flex: 1;
+}

@@ -1,0 +1,10 @@
+.poster {
+  width: 320px;
+  height: 480px;
+
+}
+
+.poster > img {
+  width: 100%;
+  height: 100%;
+}

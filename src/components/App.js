@@ -1,21 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchMovie } from '../actions/movies_actions';
+import React from 'react';
+import MovieInfoContainer from '../containers/MovieInfoContainer';
 
-class App extends Component {
-  componentDidMount() {
-    this.props.fetchMovie(284054);
-  }
+const App = () => (
+  <div>
+    <MovieInfoContainer />
+  </div>
+);
 
-  render() {
-    return <div>Test</div>;
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    movie: state.movies
-  };
-};
-
-export default connect(mapStateToProps, { fetchMovie })(App);
+export default App;
