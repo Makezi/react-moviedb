@@ -8,7 +8,10 @@ function fetchMovieIsLoading(state = [], action) {
 }
 
 function fetchMovie(state = [], action) {
-  return { ...state, result: action.payload };
+  return {
+    ...state,
+    byId: { ...state.byId, [action.payload.id]: action.payload }
+  };
 }
 
 export function moviesReducer(state = [], action) {

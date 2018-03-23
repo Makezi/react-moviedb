@@ -4,7 +4,7 @@ import { fetchMovie } from '../actions/movies_actions';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchMovie(3);
+    this.props.fetchMovie(284054);
   }
 
   render() {
