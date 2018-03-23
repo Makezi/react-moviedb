@@ -3,18 +3,25 @@ import { connect } from 'react-redux';
 import { fetchMovie } from '../actions/movies_actions';
 import MovieInfo from '../components/MovieInfo/';
 
-const MOVIE_ID = 284054;
-
 class MovieInfoContainer extends Component {
   componentDidMount() {
-    this.props.fetchMovie(MOVIE_ID);
+    const id = this.props.params.id;
+    this.props.fetchMovie(id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params.id !== nextProps.params.id) {
+      this.props.fetchMovie(nextProps.params.id);
+    }
   }
 
   render() {
     const { isLoading, byId } = this.props.movie;
+    const { id } = this.props.params;
+    const movie = byId[id];
     return (
       <Fragment>
-        <MovieInfo isLoading={isLoading} movie={byId[MOVIE_ID]} />
+        <MovieInfo isLoading={isLoading} movie={movie} />
       </Fragment>
     );
   }

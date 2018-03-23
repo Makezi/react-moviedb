@@ -1,12 +1,15 @@
 import React from 'react';
-import Header from "./Header/"
-import MovieInfoContainer from '../containers/MovieInfoContainer';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './Header';
+import Main from './Main';
 
 const App = () => (
-  <div>
-    <Header />
-    <MovieInfoContainer />
-  </div>
+  <BrowserRouter>
+    <div>
+      <Header />
+      <Main />
+    </div>
+  </BrowserRouter>
 );
 
 export default App;
