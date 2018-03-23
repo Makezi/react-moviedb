@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from "../Search/";
 import './Header.css';
 
 const Header = () => (
@@ -9,6 +10,7 @@ const Header = () => (
         alt="Movie DB Logo"
       />
     </div>
+    <Search />
   </header>
 );
 
