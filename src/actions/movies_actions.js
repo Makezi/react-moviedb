@@ -38,6 +38,6 @@ export function fetchMovie(id) {
         dispatch(fetchMovieIsLoading(false));
         dispatch(fetchMovieHasErrored(false));
       })
-      .catch(error => dispatch(fetchMovieHasErrored(true)));
+      .catch(() => dispatch(fetchMovieHasErrored(true)));
   };
 }
