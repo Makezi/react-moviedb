@@ -34,7 +34,10 @@ export function fetchMovie(id) {
     axios
       .get(url)
       .then(response => dispatch({ type: FETCH_MOVIE, payload: response.data }))
-      .then(() => dispatch(fetchMovieIsLoading(false)))
+      .then(() => {
+        dispatch(fetchMovieIsLoading(false));
+        dispatch(fetchMovieHasErrored(false));
+      })
       .catch(error => dispatch(fetchMovieHasErrored(true)));
   };
 }

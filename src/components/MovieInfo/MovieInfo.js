@@ -13,7 +13,8 @@ class MovieInfo extends React.Component {
   // }
 
   render() {
-    const { isLoading, movie } = this.props;
+    const { isLoading, hasErrored, movie } = this.props;
+    if (hasErrored) return <div>There was an error</div>;
     if (isLoading || !movie) return <div>Loading...</div>;
     return (
       <div className="movie-info">

@@ -10,21 +10,25 @@ class MovieInfoContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.movie.hasErrored) {
-      this.props.history.push('/404');
-    }
+    // if (nextProps.movie.hasErrored) {
+    //   this.props.history.push('/404');
+    // }
     if (this.props.params.id !== nextProps.params.id) {
       this.props.fetchMovie(nextProps.params.id);
     }
   }
 
   render() {
-    const { isLoading, byId } = this.props.movie;
+    const { isLoading, hasErrored, byId } = this.props.movie;
     const { id } = this.props.params;
     const movie = byId[id];
     return (
       <Fragment>
-        <MovieInfo isLoading={isLoading} movie={movie} />
+        <MovieInfo
+          isLoading={isLoading}
+          hasErrored={hasErrored}
+          movie={movie}
+        />
       </Fragment>
     );
   }
