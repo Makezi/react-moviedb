@@ -3,6 +3,7 @@ import {
   FETCH_DISCOVER_MOVIES_IS_LOADING,
   FETCH_DISCOVER_MOVIES_HAS_ERRORED
 } from '../constants/action_types';
+import _ from 'lodash';
 
 const initialState = {
   pages: {},

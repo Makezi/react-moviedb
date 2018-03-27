@@ -3,7 +3,7 @@ import DiscoverContainer from '../containers/DiscoverContainer';
 
 const DiscoverPage = props => (
   <div>
-    <DiscoverContainer params={props.match.params} />
+    <DiscoverContainer match={props.match} />
   </div>
 );
 

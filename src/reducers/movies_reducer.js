@@ -29,10 +29,9 @@ function fetchMoveHasErrored(state = initialState, action) {
 function fetchMovie(state = initialState, action) {
   return {
     ...state,
-    byId: {
-      ...state.byId,
+    byId: _.merge({}, state.byId, {
       [action.payload.id]: { ...action.payload, lastFetched: Date.now() }
-    },
+    }),
     hasErrored: false
   };
 }
@@ -40,7 +39,7 @@ function fetchMovie(state = initialState, action) {
 function fetchDiscoverMovies(state = initialState, action) {
   return {
     ...state,
-    byId: _.merge(...state.byId, _.mapKeys(action.payload.results, 'id')),
+    byId: _.merge({}, state.byId, _.mapKeys(action.payload.results, 'id')),
     hasErrored: false
   };
 }

@@ -3,7 +3,7 @@ import MovieInfoContainer from '../containers/MovieInfoContainer';
 
 const MoviePage = props => (
   <div>
-    <MovieInfoContainer params={props.match.params} />
+    <MovieInfoContainer match={props.match} />
   </div>
 );
 

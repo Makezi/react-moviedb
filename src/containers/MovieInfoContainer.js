@@ -5,19 +5,19 @@ import MovieInfo from '../components/MovieInfo/';
 
 class MovieInfoContainer extends Component {
   componentDidMount() {
-    const id = this.props.params.id;
+    const id = this.props.match.params.id;
     this.props.fetchMovie(id);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.params.id !== nextProps.params.id) {
-      this.props.fetchMovie(nextProps.params.id);
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      this.props.fetchMovie(nextProps.match.params.id);
     }
   }
 
   render() {
     const { isLoading, hasErrored, byId } = this.props.movie;
-    const { id } = this.props.params;
+    const { id } = this.props.match.params;
     const movie = byId[id];
     return (
       <Fragment>
