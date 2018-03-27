@@ -7,9 +7,7 @@ import {
 } from '../constants/action_types';
 
 function isDataStale(data) {
-  const lastFetched = data
-    ? data.lastFetcthed === undefined ? 0 : data.lastFetched
-    : 0;
+  const lastFetched = data ? data.lastFetched : 0;
   return Date.now() - lastFetched > lastFetched + API_CACHE_DURATION;
 }
 
@@ -30,8 +28,7 @@ function discoverMoviesHasErrored(bool) {
 export function fetchDiscoverMovies(page = 1) {
   const url = `${BASE_API_URL}discover/movie?api_key=${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
-    // const pageInfo = getState().discovers.pages[page];
-    // if (!isDataStale(pageInfo)) return;
+    if (!isDataStale(getState().discover.pages[page])) return;
     dispatch(discoverMoviesIsLoading(true));
     axios
       .get(url)

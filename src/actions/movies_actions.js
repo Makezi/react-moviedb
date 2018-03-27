@@ -7,9 +7,7 @@ import {
 } from '../constants/action_types';
 
 function isDataStale(data) {
-  const lastFetched = data
-    ? data.lastFetcthed === undefined ? 0 : data.lastFetched
-    : 0;
+  const lastFetched = data ? data.lastFetched : 0;
   return Date.now() - lastFetched > lastFetched + API_CACHE_DURATION;
 }
 
@@ -38,7 +36,6 @@ export function fetchMovie(id) {
       .then(response => dispatch({ type: FETCH_MOVIE, payload: response.data }))
       .then(() => {
         dispatch(fetchMovieIsLoading(false));
-        // dispatch(fetchMovieHasErrored(false));
       })
       .catch(() => dispatch(fetchMovieHasErrored(true)));
   };
