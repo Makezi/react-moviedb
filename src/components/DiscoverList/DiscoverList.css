@@ -1,0 +1,10 @@
+.discover-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.discover-list > .movie-card > .poster {
+  width: 160px;
+  height: 240px;
+  padding: 10px;
+}

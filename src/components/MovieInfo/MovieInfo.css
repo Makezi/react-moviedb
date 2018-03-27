@@ -1,9 +1,4 @@
-.movie-info {
-  display: flex;
-  flex-direction: row;
-  outline: 2px solid red;
-}
-
-.movie-info > .movie-details {
-  flex: 1;
+.movie-info > .poster {
+  width: 320px;
+  height: 480px;
 }

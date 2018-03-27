@@ -1,4 +1,6 @@
 import React from 'react';
+import MovieCard from '../MovieCard/';
+import "./DiscoverList.css";
 
 const DiscoverList = ({ discoverList, movieList, pageId }) => {
   const { isLoading, hasErrored, pages } = discoverList;
@@ -8,7 +10,7 @@ const DiscoverList = ({ discoverList, movieList, pageId }) => {
   const list = movieIds.map(id => movieList[id]);
   return (
     <ul className="discover-list">
-      {list.map(movie => <li key={movie.id}>{movie.original_title}</li>)}
+      {list.map(movie => <MovieCard key={movie.id} movie={movie} />)}
     </ul>
   );
 };

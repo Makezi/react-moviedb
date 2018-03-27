@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Poster from '../../components/Poster/';
 // import { BASE_API_IMG_URL } from '../../constants/api';
-// import './MovieInfo.css';
+import './MovieInfo.css';
 
 class MovieInfo extends Component {
   // componentWillReceiveProps(nextProps) {
