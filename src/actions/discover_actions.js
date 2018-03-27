@@ -7,7 +7,9 @@ import {
 } from '../constants/action_types';
 
 function isDataStale(data) {
-  const lastFetched = data ? data.lastFetched : 0;
+  const lastFetched = data
+    ? data.lastFetcthed === undefined ? 0 : data.lastFetched
+    : 0;
   return Date.now() - lastFetched > lastFetched + API_CACHE_DURATION;
 }
 
@@ -25,12 +27,12 @@ function discoverMoviesHasErrored(bool) {
   };
 }
 
-function fetchDiscoverMovies(page = 1) {
-  const url = `${BASE_API_URL}discover/movie/?api_key=${API_KEY}&page=${page}`;
+export function fetchDiscoverMovies(page = 1) {
+  const url = `${BASE_API_URL}discover/movie?api_key=${API_KEY}&page=${page}`;
   return (dispatch, getState) => {
-    const pageInfo = getState().discovers.pages[page];
-    if (!isDataStale(pageInfo)) return;
-    discoverMoviesIsLoading(true);
+    // const pageInfo = getState().discovers.pages[page];
+    // if (!isDataStale(pageInfo)) return;
+    dispatch(discoverMoviesIsLoading(true));
     axios
       .get(url)
       .then(response =>
@@ -38,8 +40,7 @@ function fetchDiscoverMovies(page = 1) {
       )
       .then(() => {
         dispatch(discoverMoviesIsLoading(false));
-        dispatch(discoverMoviesHasErrored(false));
       })
-      .catch(() => dispatch(fetchMovieHasErrored(true)));
+      .catch(() => dispatch(discoverMoviesHasErrored(true)));
   };
 }

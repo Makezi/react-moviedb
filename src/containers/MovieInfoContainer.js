@@ -10,9 +10,6 @@ class MovieInfoContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // if (nextProps.movie.hasErrored) {
-    //   this.props.history.push('/404');
-    // }
     if (this.props.params.id !== nextProps.params.id) {
       this.props.fetchMovie(nextProps.params.id);
     }

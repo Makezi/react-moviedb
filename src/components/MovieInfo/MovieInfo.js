@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Poster from '../../components/Poster/';
 // import { BASE_API_IMG_URL } from '../../constants/api';
 // import './MovieInfo.css';
 
-class MovieInfo extends React.Component {
+class MovieInfo extends Component {
   // componentWillReceiveProps(nextProps) {
   //   if (this.props.movie !== nextProps.movie) {
   //     document.body.style.backgroundImage = `url(${BASE_API_IMG_URL}${
@@ -25,7 +25,9 @@ class MovieInfo extends React.Component {
             {movie.title !== movie.original_title ? movie.original_title : null}
           </h2>
           <ul>
-            {movie.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
+            {movie.genres
+              ? movie.genres.map(genre => <li key={genre.id}>{genre.name}</li>)
+              : ''}
           </ul>
           <p className="overview">{movie.overview}</p>
           <div className="original-release">

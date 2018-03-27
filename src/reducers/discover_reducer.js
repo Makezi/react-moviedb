@@ -6,6 +6,8 @@ import {
 
 const initialState = {
   pages: {},
+  totalPages: 0,
+  totalResults: 0,
   isLoading: false,
   hasErrored: false
 };
@@ -25,7 +27,21 @@ function fetchDiscoverMoviesHasErrored(state = initialState, action) {
 }
 
 function fetchDiscoverMovies(state = initialState, action) {
-  return state;
+  return {
+    ...state,
+    pages: {
+      ...state.pages,
+      [action.payload.page]: {
+        page: action.payload.page,
+        ids: action.payload.results.map(movie => movie.id),
+        lastFetched: Date.now()
+      }
+    },
+    totalPages:
+      action.payload.total_pages <= 1000 ? action.payload.total_pages : 1000,
+    totalResults: action.payload.total_results,
+    hasErrored: false
+  };
 }
 
 export function discoverReducer(state = initialState, action) {

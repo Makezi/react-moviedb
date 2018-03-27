@@ -1,11 +1,13 @@
 import {
   FETCH_MOVIE,
+  FETCH_DISCOVER_MOVIES,
   FETCH_MOVIE_IS_LOADING,
   FETCH_MOVIE_HAS_ERRORED
 } from '../constants/action_types';
+import _ from 'lodash';
 
 const initialState = {
-  byId: [],
+  byId: {},
   isLoading: false,
   hasErrored: false
 };
@@ -29,9 +31,17 @@ function fetchMovie(state = initialState, action) {
     ...state,
     byId: {
       ...state.byId,
-      [action.payload.id]: { ...action.payload, lastFetched: Date.now() },
-      hasErrored: false
-    }
+      [action.payload.id]: { ...action.payload, lastFetched: Date.now() }
+    },
+    hasErrored: false
+  };
+}
+
+function fetchDiscoverMovies(state = initialState, action) {
+  return {
+    ...state,
+    byId: _.merge(...state.byId, _.mapKeys(action.payload.results, 'id')),
+    hasErrored: false
   };
 }
 
@@ -43,6 +53,8 @@ export function moviesReducer(state = initialState, action) {
       return fetchMoveHasErrored(state, action);
     case FETCH_MOVIE:
       return fetchMovie(state, action);
+    case FETCH_DISCOVER_MOVIES:
+      return fetchDiscoverMovies(state, action);
     default:
       return state;
   }
