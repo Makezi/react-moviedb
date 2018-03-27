@@ -7,7 +7,10 @@ import {
 } from '../constants/action_types';
 
 function isDataStale(data) {
-  const lastFetched = data ? data.lastFetched : 0;
+  let lastFetched = 0;
+  if (data && data.lastFetched !== undefined) {
+    lastFetched = data.lastFetched;
+  }
   return Date.now() - lastFetched > lastFetched + API_CACHE_DURATION;
 }
 
