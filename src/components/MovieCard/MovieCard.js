@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Poster from '../Poster';
 import moment from 'moment';
-import './MovieCard.css';
+// import './MovieCard.css';
+import "./MovieCard.scss";
 
 const MovieCard = ({ movie }) => (
   <Link to={`/movie/${movie.id}`}>
