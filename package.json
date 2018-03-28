@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "lodash": "^4.17.5",
+    "moment": "^2.21.0",
     "pure-react-carousel": "^1.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

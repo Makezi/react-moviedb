@@ -19,7 +19,7 @@ function fetchMovieIsLoading(state = initialState, action) {
   };
 }
 
-function fetchMoveHasErrored(state = initialState, action) {
+function fetchMovieHasErrored(state = initialState, action) {
   return {
     ...state,
     hasErrored: action.payload
@@ -49,7 +49,7 @@ export function moviesReducer(state = initialState, action) {
     case FETCH_MOVIE_IS_LOADING:
       return fetchMovieIsLoading(state, action);
     case FETCH_MOVIE_HAS_ERRORED:
-      return fetchMoveHasErrored(state, action);
+      return fetchMovieHasErrored(state, action);
     case FETCH_MOVIE:
       return fetchMovie(state, action);
     case FETCH_DISCOVER_MOVIES:

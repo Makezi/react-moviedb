@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Poster from '../../components/Poster/';
+import moment from 'moment';
 // import { BASE_API_IMG_URL } from '../../constants/api';
 import './MovieInfo.css';
 
@@ -21,31 +22,46 @@ class MovieInfo extends Component {
         <Poster title={movie.original_title} img={movie.poster_path} />
         <div className="movie-metadata">
           <h2 className="title">
-            {movie.title}{' '}
-            {movie.title !== movie.original_title ? movie.original_title : null}
+            {movie.original_title && movie.original_title !== movie.title
+              ? `${movie.original_title} (${movie.title})`
+              : movie.title}
           </h2>
-          <ul>
-            {movie.genres
-              ? movie.genres.map(genre => <li key={genre.id}>{genre.name}</li>)
-              : ''}
-          </ul>
           <p className="overview">{movie.overview}</p>
+          <div className="vote-average">
+            <h3>Voting Average</h3>
+            <p>{movie.vote_average * 10}%</p>
+          </div>
           <div className="original-release">
             <h3>Original Release</h3>
-            <p>{movie.release_date}</p>
+            <p>{moment(movie.release_date).format('MMMM D, YYYY')}</p>
           </div>
           <div className="running-time">
             <h3>Running Time</h3>
-            <p>{movie.runtime} mins</p>
+            <p>{movie.runtime === 0 ? '-' : `${movie.runtime} mins`}</p>
           </div>
-          <div className="box-office">
-            <h3>Box Office</h3>
-            <p>${movie.revenue}</p>
+          <div className="budget">
+            <h3>Budget</h3>
+            {movie.budget === 0
+              ? '-'
+              : `$${Number(movie.budget).toLocaleString()}`}
           </div>
-          <div className="vote-average">
-            <h3>Voting Average</h3>
-            <p>{movie.vote_average} / 10</p>
+          <div className="revenue">
+            <h3>Revenue</h3>
+            <p>
+              {movie.revenue === 0
+                ? '-'
+                : `$${Number(movie.revenue).toLocaleString()}`}
+            </p>
           </div>
+          <div className="genres">
+            <h3>Genres</h3>
+            {movie.genres
+              ? movie.genres.map(genre => (
+                  <span key={genre.id}>{genre.name}</span>
+                ))
+              : '-'}
+          </div>
+          <ul />
         </div>
       </div>
     );
