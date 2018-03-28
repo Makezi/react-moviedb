@@ -1,0 +1,6 @@
+.suggestions {
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  outline: 1px solid red;
+}

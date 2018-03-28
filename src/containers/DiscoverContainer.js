@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchDiscoverMovies } from '../actions/discover_actions';
 import DiscoverList from '../components/DiscoverList/';
@@ -18,7 +18,7 @@ class DiscoverContainer extends Component {
 
   render() {
     const { movie, discover } = this.props;
-    const { params, path } = this.props.match;
+    const { params } = this.props.match;
     const basePath = `/discover/`;
     const pageId = params.page || 1;
     const nextPageId = +pageId + 1;
@@ -28,8 +28,8 @@ class DiscoverContainer extends Component {
     return (
       <div>
         <DiscoverList
-          discoverList={this.props.discover}
-          movieList={this.props.movie.byId}
+          discoverList={discover}
+          movieList={movie.byId}
           pageId={pageId}
         />
         <Paginator
