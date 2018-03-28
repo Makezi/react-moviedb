@@ -2,7 +2,7 @@
   display: flex;
 } */
 
-.movie-card {
+.card {
   width: 400px;
   height: 200px;
   display: flex;
@@ -10,13 +10,14 @@
   justify-content: space-between;
 }
 
-.movie-card .poster {
+.poster {
   width: 200px;
   height: 200px;
   outline: 1px solid red;
   flex: 50%;
 }
 
-.movie-card .movie-detail {
+.details {
   flex: 50%;
+  outline: 1px solid red;
 }
