@@ -4,7 +4,7 @@ import _ from 'lodash';
 import SearchBar from './SearchBar/';
 import SearchResults from './SearchResults/';
 import { BASE_API_URL, API_KEY } from '../../constants/api';
-import './Search.css';
+import styles from "./Search.scss";
 
 class Search extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Search extends Component {
   render() {
     const searchMovies = _.debounce(query => this.searchMovies(query), 250);
     return (
-      <div className="search" onBlur={this.hideResults}>
+      <div className={styles.search} onBlur={this.hideResults}>
         <SearchBar onSearch={searchMovies} />
         {this.state.showResults ? (
           <SearchResults results={this.state.results} />

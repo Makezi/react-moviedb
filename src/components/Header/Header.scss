@@ -1,0 +1,22 @@
+header {
+  padding: 20px 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 10px repeat(12, 1fr) 10px;
+  grid-gap: 10px;
+  justify-items: center;
+}
+
+.logo {
+  margin: 10px 0;
+  grid-column: 1 / -1;
+  min-width: 200px;
+  // max-width: 250px;
+
+  @media (min-width: 700px) {
+    grid-column: 2 / 6;
+    justify-self: start;
+  }
+}

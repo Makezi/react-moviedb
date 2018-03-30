@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Poster from '../../components/Poster/';
 import moment from 'moment';
 // import { BASE_API_IMG_URL } from '../../constants/api';
-import './MovieInfo.css';
+import styles from "./MovieInfo.scss";
 
 class MovieInfo extends Component {
   // componentWillReceiveProps(nextProps) {

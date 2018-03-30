@@ -1,0 +1,10 @@
+.search {
+  grid-column: 2 / 14;
+  width: 100%;
+  position: relative;
+
+  @media (min-width: 700px) {
+    align-self: center;
+    grid-column: span 6 / 14;
+  }
+}

@@ -1,0 +1,17 @@
+.searchBar {
+  width: 100%;
+  height: 40px;
+  position: relative;
+
+  & > input {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    font-size: 1rem;
+    box-shadow: 0 10px 20px 5px rgba(0,0,0, 0.3);
+  }
+}
+

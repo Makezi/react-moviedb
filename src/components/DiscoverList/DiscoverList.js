@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import MovieCard from '../MovieCard/';
-import "./DiscoverList.css";
+import styles from './DiscoverList.scss';
 
 const DiscoverList = ({ discoverList, movieList, pageId }) => {
   const { isLoading, hasErrored, pages } = discoverList;
@@ -9,7 +9,7 @@ const DiscoverList = ({ discoverList, movieList, pageId }) => {
   const movieIds = discoverList.pages[pageId].ids;
   const list = movieIds.map(id => movieList[id]);
   return (
-    <ul className="discover-list">
+    <ul className={styles.discoverList}>
       {list.map(movie => <MovieCard key={movie.id} movie={movie} />)}
     </ul>
   );

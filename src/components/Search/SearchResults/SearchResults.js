@@ -1,19 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './SearchResults.css';
+import Poster from '../../Poster/';
+import styles from './SearchResults.scss';
 
 const SearchResults = ({ results }) => {
-  results = results.slice(0, 5);
+  results = results.slice(0, 10);
   return (
-    <ul className="search-results">
+    <ul className={styles.searchResults}>
       {results && results.length !== 0 ? (
         results.map(result => (
-          <li key={result.id}>
-            <Link to={`/movie/${result.id}`}>{result.original_title}</Link>
+          <li className={styles.result} key={result.id}>
+            <Link className={styles.link} to={`/movie/${result.id}`}>
+              <Poster className={styles.poster} img={result.poster_path} />
+              {result.original_title}
+            </Link>
           </li>
         ))
       ) : (
-        <li>No results found</li>
+        <li className={styles.result}>No results found</li>
       )}
     </ul>
   );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchDiscoverMovies } from '../actions/discover_actions';
 import DiscoverList from '../components/DiscoverList/';
-import Paginator from '../components/Paginator';
+import Paginator from '../components/Paginator/';
 
 class DiscoverContainer extends Component {
   componentDidMount() {

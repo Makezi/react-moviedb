@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html {
+  box-sizing: border-box;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: calc(100vh - 100px);
+  background-position: center top;
+  background-size: cover;
+  background: rgb(5, 55, 45);
+  /* background: linear-gradiant(rgba(5, 55, 45, 0.9) 0%, rgba(5, 55, 45, 1) 100%); */
+  color: white;
+}
+
+img {
+  max-width: 100%;
+}

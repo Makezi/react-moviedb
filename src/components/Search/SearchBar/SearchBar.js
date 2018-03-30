@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from "./SearchBar.scss";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="search-bar">
+      <div className={styles.searchBar}>
         <input
           type="text"
           placeholder="Search movie..."
