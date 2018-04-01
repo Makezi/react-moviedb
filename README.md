@@ -1,10 +1,10 @@
-# React MovieDB WIP
+# react-moviedb
 
 A responsive application that lets you search for information about movies. Built using React/Redux and the TMDb API.
 
 API Documentation: https://www.themoviedb.org/documentation/api
 
-<img src="https://imgur.com/Elkh245.gif" height="500" />
+<img src="https://imgur.com/5kYREVh.png" height="500" />
 
 ## Demo
 
