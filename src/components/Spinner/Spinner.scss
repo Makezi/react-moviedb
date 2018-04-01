@@ -1,0 +1,30 @@
+$primary-color: rgb(1, 210, 119);
+
+.spinner {
+  display: inline-block;
+  width: 128px;
+  height: 128px;
+  position: relative;
+}
+
+.spinner:after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 92px;
+  height: 92px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 10px solid $primary-color;
+  border-color: $primary-color transparent $primary-color transparent;
+  animation: spinner 1.2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

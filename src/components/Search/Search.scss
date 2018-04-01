@@ -1,0 +1,9 @@
+.search {
+  position: relative;
+  margin: 0 20px;
+
+  @media (min-width: 700px) {
+    align-self: center;
+    flex: 1;
+  }
+}

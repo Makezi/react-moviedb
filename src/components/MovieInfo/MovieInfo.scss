@@ -1,0 +1,99 @@
+$primary-color: rgb(1, 210, 119);
+
+.movieContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 10px;
+
+  @media (min-width: 700px) {
+    flex-direction: row;
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+.spinner,
+.error {
+  display: flex;
+  justify-content: center;
+}
+
+.poster {
+  max-width: 200px;
+  margin: 10px 2%;
+  align-self: center;
+  transition: transform 0.2s ease-in-out;
+
+  & > img {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (min-width: 700px) {
+    align-self: flex-start;
+    flex: 1;
+  }
+
+  @media (min-width: 900px) {
+    max-width: 300px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.metadata {
+  margin: 10px 2%;
+
+  @media (min-width: 700px) {
+    flex: 1;
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  color: $primary-color;
+  padding: 10px 0;
+
+  @media (min-width: 700px) {
+    font-size: 2.5rem;
+  }
+}
+
+.overview {
+  margin: 25px 0;
+}
+
+.genres {
+  padding-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  & > span {
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background: $primary-color;
+    color: white;
+    border-radius: 10px;
+  }
+}
+
+h4 {
+  padding: 10px 0;
+  color: $primary-color;
+}
+
+.infoContainer {
+  @media (min-width: 700px) {
+    display: flex;
+    flex-wrap: wrap;
+    & > * {
+      flex: 1 50%;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+$primary-color: rgb(1, 210, 119);
+
+.paginator {
+  margin: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pageResults {
+  color: $primary-color;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: white;
+  font-size: 2rem;
+  padding: 5px;
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    color: rgb(1, 210, 119);
+  }
+}
