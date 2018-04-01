@@ -13,7 +13,7 @@ const MovieCard = ({ movie }) => (
           <span className={styles.voteAverage}>{movie.vote_average * 10}%</span>
         ) : null}
         <span className={styles.title}>
-          {`${movie.original_title || movie.title} (${moment(
+          {`${movie.title} (${moment(
             movie.release_date
           ).format('YYYY') || null})`}
         </span>

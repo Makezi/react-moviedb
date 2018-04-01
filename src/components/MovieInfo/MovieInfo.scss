@@ -24,6 +24,7 @@ $primary-color: rgb(1, 210, 119);
   max-width: 200px;
   margin: 10px 2%;
   align-self: center;
+  transition: transform 0.2s ease-in-out;
 
   & > img {
     border-radius: 10px;
@@ -39,6 +40,10 @@ $primary-color: rgb(1, 210, 119);
   @media (min-width: 900px) {
     max-width: 300px;
   }
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .metadata {
@@ -53,7 +58,6 @@ $primary-color: rgb(1, 210, 119);
   font-size: 1.5rem;
   color: $primary-color;
   padding: 10px 0;
-
 
   @media (min-width: 700px) {
     font-size: 2.5rem;

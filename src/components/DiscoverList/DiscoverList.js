@@ -31,11 +31,9 @@ class DiscoverList extends Component {
     const list = movieIds.map(id => movieList[id]);
 
     return (
-      <div>
-        <ul className={styles.discoverList}>
-          {list.map(movie => <MovieCard key={movie.id} movie={movie} />)}
-        </ul>
-      </div>
+      <ul className={styles.discoverList}>
+        {list.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+      </ul>
     );
   }
 }
