@@ -303,5 +303,5 @@ h4 {
 .App__wrapper___1PGmA {
   max-width: 1200px;
   margin: 0 auto; }
-html{font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:300;font-size:16px;height:100%;background:#091c25}*,html{-webkit-box-sizing:border-box;box-sizing:border-box}*,:after,:before{margin:0;padding:0}*,:after,:before{-webkit-box-sizing:inherit;box-sizing:inherit}body{min-height:calc(100vh - 100px);background-position:top;background-size:cover;color:#fff;height:100%}img{max-width:100%}
-/*# sourceMappingURL=main.bb6e3843.css.map*/
+html{-webkit-box-sizing:border-box;box-sizing:border-box;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:300;font-size:16px;background:#091c25}@media (min-width:700px){html{height:100%}}*{margin:0;padding:0;-webkit-box-sizing:border-box;box-sizing:border-box}*,:after,:before{-webkit-box-sizing:inherit;box-sizing:inherit;margin:0;padding:0}body{min-height:calc(100vh - 100px);background-position:top;background-size:cover;color:#fff;height:100%}img{max-width:100%}
+/*# sourceMappingURL=main.58f1b3df.css.map*/
