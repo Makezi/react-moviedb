@@ -13,6 +13,8 @@ class DiscoverContainer extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params !== this.props.match.params) {
       this.props.fetchDiscoverMovies(nextProps.match.params.page);
+      console.log("test");
+      window.scroll(0, 0);
     }
   }
 
@@ -20,7 +22,7 @@ class DiscoverContainer extends Component {
     const { movie, discover } = this.props;
     const { params } = this.props.match;
     const basePath = `/discover/`;
-    const pageId = params.page || "1";
+    const pageId = params.page || '1';
     const nextPageId = +pageId + 1;
     const prevPageId = +pageId - 1;
     const { totalPages, totalResults } = discover;
