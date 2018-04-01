@@ -1,0 +1,19 @@
+.footer {
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & p {
+    margin: 2px 0;
+  }
+
+  & a {
+    color: rgb(1, 210, 119);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
