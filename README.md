@@ -1,5 +1,5 @@
 # React MovieDB WIP
 
-A movies and shows database application built using React/Redux and TheMovieDB API.
+An application that lets you search for information about movies. Built using React/Redux and the TMDb API.
 
 API Documentation: https://www.themoviedb.org/documentation/api

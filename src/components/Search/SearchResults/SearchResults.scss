@@ -1,29 +1,53 @@
+$highlight-color: rgb(1, 210, 119);
+
 .searchResults {
   position: absolute;
   width: 100%;
   background: white;
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   margin-top: 5px;
   list-style-type: none;
+  box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1;
 }
 
 .result {
   &:not(:last-child) {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
+}
 
-  & a {
-    display: block;
-    padding: 10px 20px;
-    color: rgb(10, 10, 10);
-    text-decoration: none;
-    font-weight: 300;
-    transition: background 0.1s ease, color 0.1s ease;
+.link {
+  outline: 1px solid red;
+  font-weight: 300;
+  display: flex;
+  padding: 5px;
+  color: rgb(10, 10, 10);
+  text-decoration: none;
+  transition: background 0.1s ease, color 0.1s ease;
 
-    &:hover {
-      background: rgb(1, 210, 119);
-      color: white;
+  & img {
+    max-width: 36px;
+  }
+
+  & .title {
+    align-self: center;
+    margin-left: 10px;
+  }
+
+  & .year {
+    color: $highlight-color;
+    font-size: 0.85rem;
+    font-weight: 100;
+  }
+
+  &:hover {
+    background: $highlight-color;
+    color: white;
+
+    .year {
+      color: black;
     }
   }
 }

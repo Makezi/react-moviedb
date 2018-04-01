@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styles from "./SearchBar.scss";
+import styles from './SearchBar.scss';
+import FontAwesome from 'react-fontawesome';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div className={styles.searchBar}>
+        <FontAwesome className={styles.icon} name="search" />
         <input
           type="text"
           placeholder="Search movie..."

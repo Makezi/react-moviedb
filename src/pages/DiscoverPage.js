@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import DiscoverContainer from '../containers/DiscoverContainer';
 
 const DiscoverPage = props => (
-  <div>
+  <Fragment>
     <DiscoverContainer match={props.match} />
-  </div>
+  </Fragment>
 );
 
 export default DiscoverPage;

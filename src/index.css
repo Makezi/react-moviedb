@@ -3,8 +3,10 @@
 html {
   box-sizing: border-box;
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 900;
+  font-weight: 300;
   font-size: 16px;
+  height: 100%;
+  background: rgb(9, 28, 37);
 }
 
 * {
@@ -25,9 +27,11 @@ body {
   min-height: calc(100vh - 100px);
   background-position: center top;
   background-size: cover;
-  background: rgb(5, 55, 45);
-  /* background: linear-gradiant(rgba(5, 55, 45, 0.9) 0%, rgba(5, 55, 45, 1) 100%); */
   color: white;
+  /* background: rgb(9, 28, 37); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* height: 100%; */
 }
 
 img {

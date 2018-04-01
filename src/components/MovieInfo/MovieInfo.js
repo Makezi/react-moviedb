@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
 import Poster from '../../components/Poster/';
 import moment from 'moment';
-// import { BASE_API_IMG_URL } from '../../constants/api';
-import styles from "./MovieInfo.scss";
+import { BASE_API_IMG_URL } from '../../constants/api';
+import styles from './MovieInfo.scss';
 
 class MovieInfo extends Component {
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.movie !== nextProps.movie) {
-  //     document.body.style.backgroundImage = `url(${BASE_API_IMG_URL}${
-  //       nextProps.movie.poster_path
-  //     })`;
-  //   }
-  // }
+  constructor(props) {
+    super(props);
+    this.renderBackground = this.renderBackground.bind(this);
+  }
+
+  componentWillMount() {
+    // const { movie } = this.props;
+    // if (movie) {
+    //   this.renderBackground(movie.backdrop_path);
+    // }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // if (this.props.movie !== nextProps.movie) {
+    //   this.renderBackground(nextProps.movie.backdrop_path);
+    // }
+  }
+
+  renderBackground(backdrop) {
+    // document.body.style.backgroundImage = `linear-gradient(to right,
+    //     rgba(0, 70, 39, 0.925) 0%,
+    //     rgba(9, 28, 37, 0.925) 100%),
+    //     url(${BASE_API_IMG_URL}${backdrop})`;
+    // document.body.style.backgroundImage = `url(${BASE_API_IMG_URL}${backdrop})`;
+    // document.body.style.background = `rgb(9, 28, 59);`;
+  }
 
   render() {
     const { isLoading, hasErrored, movie } = this.props;

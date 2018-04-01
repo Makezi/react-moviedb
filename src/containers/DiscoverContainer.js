@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchDiscoverMovies } from '../actions/discover_actions';
 import DiscoverList from '../components/DiscoverList/';
@@ -26,7 +26,7 @@ class DiscoverContainer extends Component {
     const { totalPages, totalResults } = discover;
 
     return (
-      <div>
+      <Fragment>
         <DiscoverList
           discoverList={discover}
           movieList={movie.byId}
@@ -39,7 +39,7 @@ class DiscoverContainer extends Component {
           totalPages={totalPages}
           totalResults={totalResults}
         />
-      </div>
+      </Fragment>
     );
   }
 }

@@ -5,25 +5,21 @@ import moment from 'moment';
 import styles from './MovieCard.scss';
 
 const MovieCard = ({ movie }) => (
-  <Link to={`/movie/${movie.id}`}>
-    <div className={styles.card}>
-      <Poster className={styles.poster} img={movie.poster_path} />
+  <div className={styles.card}>
+    <Link to={`/movie/${movie.id}`}>
+      <Poster img={movie.poster_path} title={movie.original_title} />
       <div className={styles.details}>
-        <span className="title">{movie.original_title || movie.title}</span>
-        {movie.release_date ? (
-          <span className="release-date">
-            {moment(movie.release_date).format('YYYY')}
+        {movie.vote_average ? (
+          <span className={styles.voteAverage}>
+            {movie.vote_average * 10}%
           </span>
         ) : null}
-        {movie.overview ? (
-          <span className="overview">{movie.overview}</span>
-        ) : null}
-        {movie.vote_average ? (
-          <span className="vote-average">{movie.vote_average * 10}%</span>
-        ) : null}
+        <span className={styles.title}>
+          {movie.original_title || movie.title}
+        </span>
       </div>
-    </div>
-  </Link>
+    </Link>
+  </div>
 );
 
 export default MovieCard;

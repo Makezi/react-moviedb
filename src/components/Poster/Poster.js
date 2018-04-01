@@ -1,13 +1,25 @@
 import React from 'react';
 import { BASE_API_IMG_URL } from '../../constants/api';
-import LazyImage from "../LazyImage/";
+import placeholder from '../../images/placeholder-poster.png';
+import styles from './Poster.scss';
 
-const Poster = ({ title, img, children }) => (
-  <div className="poster">
-    <LazyImage src={`${BASE_API_IMG_URL}${img}`} alt={`${title} poster`}>
-      {children}
-    </LazyImage>
-  </div>
-);
+const Poster = ({ img, title }) => {
+  const placeholderStyle = {
+    backgroundImage: `url(${placeholder})`
+  };
+  return (
+    <div
+      className={styles.placeholder}
+      style={placeholderStyle}
+      title={`poster of ${title}`}
+    >
+      <img
+        className={styles.poster}
+        src={`${BASE_API_IMG_URL}${img}`}
+        alt={`poster of ${title}`}
+      />
+    </div>
+  );
+};
 
 export default Poster;

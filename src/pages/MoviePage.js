@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import MovieInfoContainer from '../containers/MovieInfoContainer';
 
 const MoviePage = props => (
-  <div>
+  <Fragment>
     <MovieInfoContainer match={props.match} />
-  </div>
+  </Fragment>
 );
 
 export default MoviePage;

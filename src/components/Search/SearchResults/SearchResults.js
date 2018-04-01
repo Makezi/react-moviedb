@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Poster from '../../Poster/';
+import moment from 'moment';
 import styles from './SearchResults.scss';
 
 const SearchResults = ({ results }) => {
@@ -11,13 +12,22 @@ const SearchResults = ({ results }) => {
         results.map(result => (
           <li className={styles.result} key={result.id}>
             <Link className={styles.link} to={`/movie/${result.id}`}>
-              <Poster className={styles.poster} img={result.poster_path} />
-              {result.original_title}
+              <Poster img={result.poster_path} />
+              <span className={styles.title}>
+                {result.original_title}
+                <span className={styles.year}>{` (${
+                  result.release_date
+                    ? moment(result.release_date).format('YYYY')
+                    : 'TBA'
+                })`}</span>
+              </span>
             </Link>
           </li>
         ))
       ) : (
-        <li className={styles.result}>No results found</li>
+        <li className={styles.result}>
+          <div className={styles.link}>No results found</div>
+        </li>
       )}
     </ul>
   );

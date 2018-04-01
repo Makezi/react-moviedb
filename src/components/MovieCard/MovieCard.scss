@@ -1,1 +1,55 @@
+.card {
+  display: flex;
+  margin: 15px 4%;
+  flex: 1 42%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.3);
 
+  @media (min-width: 700px) {
+    margin: 15px 2%;
+    flex: 1 21%;
+  }
+
+  &:hover {
+    .details {
+      opacity: 1;
+    }
+  }
+}
+
+.details {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  position: absolute;
+  color: white;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  transition: opacity 0.1s ease;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.85),
+    rgba(10, 10, 10, 0.5)
+  );
+}
+
+.title {
+  font-size: 0.8rem;
+  align-self: center;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.voteAverage {
+  align-self: center;
+  font-size: 2rem;
+  color: rgb(1, 210, 119);
+}
