@@ -12,7 +12,7 @@ const SearchResults = ({ results }) => {
       {results && results.length !== 0 ? (
         results.map(result => (
           <li className={styles.result} key={result.id}>
-            <Link className={styles.link} to={`/movie/${result.id}`}>
+            <Link className={styles.link} to={`/react-moviedb/movie/${result.id}`}>
               <Poster img={result.poster_path} title={result.title} />
               <span className={styles.title}>
                 {result.title}

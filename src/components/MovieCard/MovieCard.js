@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styles from './MovieCard.scss';
 
 const MovieCard = ({ movie }) => (
-  <Link className={styles.card} to={`/movie/${movie.id}`}>
+  <Link className={styles.card} to={`/react-moviedb/movie/${movie.id}`}>
     <Poster img={movie.poster_path} title={movie.original_title} />
     <div className={styles.details}>
       {movie.vote_average ? (

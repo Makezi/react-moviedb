@@ -20,12 +20,12 @@ const Paginator = ({
 
     <div className={styles.buttons}>
       {prevPageId > 0 ? (
-        <Link className={styles.prevButton} to={`${basePath}${prevPageId}`}>
+        <Link className={styles.prevButton} to={`/react-moviedb${basePath}${prevPageId}`}>
           <FontAwesome className={styles.icon} name="chevron-circle-left" />
         </Link>
       ) : null}
       {nextPageId <= totalPages ? (
-        <Link className={styles.nextButton} to={`${basePath}${nextPageId}`}>
+        <Link className={styles.nextButton} to={`/react-moviedb${basePath}${nextPageId}`}>
           <FontAwesome className={styles.icon} name="chevron-circle-right" />
         </Link>
       ) : null}

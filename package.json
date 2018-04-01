@@ -1,6 +1,7 @@
 {
   "name": "react-moviedb",
   "version": "0.1.0",
+  "homepage": "http://makezi.github.io/react-moviedb",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -26,6 +27,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
+    "gh-pages": "^1.1.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "lodash": "^4.17.5",
@@ -58,7 +60,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.2"
