@@ -6,16 +6,17 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.3);
-
-  @media (min-width: 700px) {
-    margin: 15px 2%;
-    flex: 1 21%;
-  }
+  background: #333;
 
   &:hover {
     .details {
       opacity: 1;
     }
+  }
+
+  @media (min-width: 700px) {
+    margin: 15px 2%;
+    flex: 1 21%;
   }
 }
 
@@ -46,6 +47,7 @@
   align-self: center;
   padding: 10px;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .voteAverage {
