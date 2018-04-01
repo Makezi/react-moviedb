@@ -14,11 +14,11 @@ const SearchResults = ({ results }) => {
             <Link className={styles.link} to={`/movie/${result.id}`}>
               <Poster img={result.poster_path} />
               <span className={styles.title}>
-                {result.original_title}
+                {result.title}
                 <span className={styles.year}>{` (${
                   result.release_date
                     ? moment(result.release_date).format('YYYY')
-                    : 'TBA'
+                    : 'N/A'
                 })`}</span>
               </span>
             </Link>

@@ -63,24 +63,32 @@ class MovieInfo extends Component {
           <div className={styles.infoContainer}>
             <div className={styles.info}>
               <h4>Original Release</h4>
-              <p>{moment(movie.release_date).format('MMMM D, YYYY')}</p>
+              <p>
+                {movie.release_date
+                  ? moment(movie.release_date).format('MMMM D, YYYY')
+                  : 'N/A'}
+              </p>
             </div>
 
             <div className={styles.info}>
               <h4>Running Time</h4>
-              <p>{movie.runtime === 0 ? '-' : `${movie.runtime} mins`}</p>
+              <p>
+                {movie.runtime === 0 || !movie.runtime
+                  ? 'N/A'
+                  : `${movie.runtime} mins`}
+              </p>
             </div>
             <div className={styles.info}>
               <h4>Budget</h4>
-              {movie.budget === 0
-                ? '-'
+              {movie.budget === 0 || !movie.budget
+                ? 'N/A'
                 : `$${Number(movie.budget).toLocaleString()}`}
             </div>
             <div className={styles.info}>
               <h4>Revenue</h4>
               <p>
-                {movie.revenue === 0
-                  ? '-'
+                {movie.revenue === 0 || !movie.revenue
+                  ? 'N/A'
                   : `$${Number(movie.revenue).toLocaleString()}`}
               </p>
             </div>
@@ -95,7 +103,7 @@ class MovieInfo extends Component {
                   ? movie.genres.map(genre => (
                       <span key={genre.id}>{genre.name}</span>
                     ))
-                  : '-'}
+                  : 'N/A'}
               </div>
             </div>
           </div>
