@@ -37,6 +37,7 @@ class MovieInfo extends Component {
         url(${BASE_API_IMG_URL}${backdrop})`;
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundSize = 'cover';
+    // document.body.style.backgroundAttachment = "fixed";
   }
 
   render() {
