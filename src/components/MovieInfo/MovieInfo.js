@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Poster from '../../components/Poster/';
 import Spinner from '../Spinner';
+import NotFound from '../NotFound';
 import moment from 'moment';
 import { BASE_API_IMG_URL } from '../../constants/api';
 import styles from './MovieInfo.scss';
@@ -39,8 +40,13 @@ class MovieInfo extends Component {
 
   render() {
     const { isLoading, hasErrored, movie } = this.props;
-    // Need to add proper error message thingy below
-    if (hasErrored) return <div>There was an error</div>;
+    if (hasErrored) {
+      return (
+        <div className={styles.error}>
+          <NotFound />
+        </div>
+      );
+    }
     if (isLoading || !movie) {
       return (
         <div className={styles.spinner}>

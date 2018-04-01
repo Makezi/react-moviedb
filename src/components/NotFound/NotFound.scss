@@ -1,0 +1,33 @@
+$primary-color: rgb(1, 210, 119);
+
+.notfound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & h2 {
+    font-size: 2.5rem;
+
+    @media (min-width: 500px) {
+      font-size: 5rem;
+    }
+  }
+
+  & p {
+    margin: 10px 0;
+    font-size: 1rem;
+
+    @media (min-width: 500px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.icon {
+  font-size: 10rem;
+  color: $primary-color;
+
+  @media (min-width: 500px) {
+    font-size: 20rem;
+  }
+}

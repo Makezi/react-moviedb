@@ -15,7 +15,8 @@ $primary-color: rgb(1, 210, 119);
   }
 }
 
-.spinner {
+.spinner,
+.error {
   display: flex;
   justify-content: center;
 }

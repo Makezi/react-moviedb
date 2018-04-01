@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import NotFound from '../components/NotFound';
 
-const NotFoundPage = () => <div>Page Not Found!</div>;
+const NotFoundPage = () => (
+  <Fragment>
+    <NotFound />
+  </Fragment>
+);
 
 export default NotFoundPage;
