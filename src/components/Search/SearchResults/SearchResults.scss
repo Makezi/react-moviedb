@@ -19,7 +19,6 @@ $highlight-color: rgb(1, 210, 119);
 }
 
 .link {
-  outline: 1px solid red;
   font-weight: 300;
   display: flex;
   justify-content: flex-start;
@@ -30,7 +29,6 @@ $highlight-color: rgb(1, 210, 119);
 
   & img {
     max-width: 36px;
-    outline: 1px solid red;
     height: 100%;
   }
 
