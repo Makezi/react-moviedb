@@ -28,8 +28,12 @@ $highlight-color: rgb(1, 210, 119);
   transition: background 0.1s ease, color 0.1s ease;
 
   & img {
-    max-width: 36px;
+    max-width: 24px;
     height: 100%;
+
+    @media (min-width: 500px) {
+      max-width: 36px;
+    }
   }
 
   & .title {

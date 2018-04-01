@@ -27,6 +27,7 @@ class SearchBar extends Component {
       <div className={styles.searchBar}>
         <FontAwesome className={styles.icon} name="search" />
         <input
+          className={styles.input}
           type="text"
           placeholder="Search movie..."
           ref={input => (this.search = input)}

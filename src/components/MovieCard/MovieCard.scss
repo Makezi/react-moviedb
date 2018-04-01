@@ -2,16 +2,15 @@
   display: flex;
   margin: 15px 4%;
   flex: 1 42%;
-  border-radius: 10px;
+  border-radius: 10px; 
   overflow: hidden;
   position: relative;
   box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.3);
   background: #333;
-  transition: transform 0.1s ease-in-out;
+  transition: transform 0.25s ease-in-out;
 
   &:hover {
     transform: scale(1.075);
-    border: 2px solid rgba(1, 210, 119, 0.5);
 
     .details {
       opacity: 1;
