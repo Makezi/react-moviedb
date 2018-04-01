@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import styles from './Paginator.scss';
 
@@ -33,3 +34,11 @@ const Paginator = ({
 );
 
 export default Paginator;
+
+Paginator.propTypes = {
+  basePath: PropTypes.string.isRequired,
+  prevPageId: PropTypes.number.isRequired,
+  nextPageId: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  totalResults: PropTypes.number.isRequired
+};

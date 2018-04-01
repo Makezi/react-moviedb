@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Search from '../Search/';
 import styles from './Header.scss';
-// import logoImage from '../../images/logo.png';
 
 const Header = () => (
   <header className={styles.header}>

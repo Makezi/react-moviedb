@@ -3,6 +3,7 @@ import Poster from '../../components/Poster/';
 import Spinner from '../Spinner';
 import NotFound from '../NotFound';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import { BASE_API_IMG_URL } from '../../constants/api';
 import styles from './MovieInfo.scss';
 
@@ -25,6 +26,10 @@ class MovieInfo extends Component {
     }
   }
 
+  componentWillUnmount() {
+    document.body.style.backgroundImage = '';
+  }
+
   renderBackground(backdrop) {
     document.body.style.backgroundImage = `linear-gradient(to right,
         rgba(19, 38, 47, 0.925) 0%,
@@ -32,10 +37,6 @@ class MovieInfo extends Component {
         url(${BASE_API_IMG_URL}${backdrop})`;
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundSize = 'cover';
-  }
-
-  componentWillUnmount() {
-    document.body.style.backgroundImage = '';
   }
 
   render() {
@@ -75,7 +76,6 @@ class MovieInfo extends Component {
                   : 'N/A'}
               </p>
             </div>
-
             <div className={styles.info}>
               <h4>Running Time</h4>
               <p>
@@ -120,3 +120,9 @@ class MovieInfo extends Component {
 }
 
 export default MovieInfo;
+
+MovieInfo.propTypes = {
+  isLoading: PropTypes.any.isRequired,
+  hasErrored: PropTypes.any.isRequired,
+  movie: PropTypes.object
+};

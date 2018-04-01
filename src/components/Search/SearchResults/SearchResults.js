@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Poster from '../../Poster/';
 import moment from 'moment';
 import styles from './SearchResults.scss';
@@ -12,7 +13,7 @@ const SearchResults = ({ results }) => {
         results.map(result => (
           <li className={styles.result} key={result.id}>
             <Link className={styles.link} to={`/movie/${result.id}`}>
-              <Poster img={result.poster_path} />
+              <Poster img={result.poster_path} title={result.title} />
               <span className={styles.title}>
                 {result.title}
                 <span className={styles.year}>{` (${
@@ -34,3 +35,7 @@ const SearchResults = ({ results }) => {
 };
 
 export default SearchResults;
+
+SearchResults.propTypes = {
+  results: PropTypes.array.isRequired
+};

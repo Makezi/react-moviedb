@@ -2,6 +2,7 @@ import React from 'react';
 import MovieCard from '../MovieCard/';
 import Spinner from '../Spinner/';
 import NotFound from '../NotFound/';
+import PropTypes from 'prop-types';
 import styles from './DiscoverList.scss';
 
 const DiscoverList = ({ discoverList, movieList, pageId }) => {
@@ -31,3 +32,9 @@ const DiscoverList = ({ discoverList, movieList, pageId }) => {
 };
 
 export default DiscoverList;
+
+DiscoverList.propTypes = {
+  discoverList: PropTypes.object.isRequired,
+  movieList: PropTypes.object.isRequired,
+  pageId: PropTypes.string
+};

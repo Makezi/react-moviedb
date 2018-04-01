@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Poster from '../Poster';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import styles from './MovieCard.scss';
 
 const MovieCard = ({ movie }) => (
@@ -20,3 +21,7 @@ const MovieCard = ({ movie }) => (
 );
 
 export default MovieCard;
+
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+};

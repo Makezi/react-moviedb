@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import DiscoverPage from "../../pages/DiscoverPage";
+import DiscoverPage from '../../pages/DiscoverPage';
 import MoviePage from '../../pages/MoviePage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import styles from './Main.scss';

@@ -20,7 +20,7 @@ class DiscoverContainer extends Component {
     const { movie, discover } = this.props;
     const { params } = this.props.match;
     const basePath = `/discover/`;
-    const pageId = params.page || 1;
+    const pageId = params.page || "1";
     const nextPageId = +pageId + 1;
     const prevPageId = +pageId - 1;
     const { totalPages, totalResults } = discover;
